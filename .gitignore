@@ -1,0 +1,3 @@
+# Never publish local credentials or notes
+.env
+PUBLISH.md
