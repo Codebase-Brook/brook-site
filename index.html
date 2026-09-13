@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-palette="indigo">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,7 +8,7 @@
 <meta property="og:description" content="I build AI systems for small businesses — more revenue, less busywork.">
 <meta property="og:type" content="website">
 <link rel="icon" href="brook.jpg">
-<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
+<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#f9f9f7;color:#131312}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
 /* ── nav CTA pill — Morningside / LeftClick pattern ── */
 
 
@@ -56,24 +56,27 @@
   transition:color .25s ease,background .25s ease;
 }
 .navlinks a:hover{color:var(--t-strong)}
-.ghost{
-  display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;
+.navlinks a.ghost,.ghost{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:11.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.065em;
   text-decoration:none;color:#fff;border:1px solid transparent;
-  border-radius:9px;padding:8px 15px;letter-spacing:-.006em;
+  border-radius:10px;padding:10px 17px;white-space:nowrap;
   background:linear-gradient(168deg, var(--ember-2) 0%, var(--ember) 52%, color-mix(in srgb, var(--ember) 82%, #6b1f06) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.28),
     0 1px 2px rgba(0,0,0,.16),
-    0 10px 22px -12px var(--glow-a),
-    0 0 32px -12px var(--glow-b);
+    0 10px 22px -12px color-mix(in srgb, var(--ember) 34%, transparent),
+    0 0 32px -12px color-mix(in srgb, var(--ember) 14%, transparent);
   transition:box-shadow .2s ease,background .2s ease;
 }
-.ghost:hover{
+.navlinks a.ghost:hover,.ghost:hover{
+  color:#fff;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.34),
     0 1px 2px rgba(0,0,0,.18),
-    0 14px 28px -12px var(--glow-a),
-    0 0 48px -10px var(--glow-a);
+    0 14px 28px -12px color-mix(in srgb, var(--ember) 40%, transparent),
+    0 0 48px -10px color-mix(in srgb, var(--ember) 40%, transparent);
 }
 /* ── nav dropdown — Products ── */
 .navdrop{position:relative;display:flex;align-items:center}
@@ -89,7 +92,7 @@
 .navdrop-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .navdrop-menu{
   position:absolute;top:calc(100% + 10px);left:0;z-index:70;
-  min-width:212px;padding:6px;
+  min-width:290px;padding:7px;
   border-radius:12px;
   background:var(--glass-bg);
   border:1px solid var(--glass-line);
@@ -287,7 +290,7 @@
   color:var(--t-strong);
 }
 .pullquote span{
-  background:linear-gradient(101deg,#f0763c 0%,#e8641f 46%,#c9491c 100%);
+  background:linear-gradient(101deg,var(--ember-2) 0%,var(--ember) 46%,var(--ember-ink) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .prose{
@@ -301,9 +304,13 @@
 .ledger{margin-top:44px;border-top:1px solid var(--line)}
 .ledger-row{
   display:grid;
-  grid-template-columns:auto 1fr;
+  /* FIXED marker column so every row starts its text at the same x
+     ("1x", "0" and "You" are all different widths, and an auto or
+     minmax track would let each row set its own). Wide enough for
+     the longest marker, "You", without clipping it. */
+  grid-template-columns:5.4ch 1fr;
   gap:8px 26px;
-  align-items:baseline;
+  align-items:start;
   padding:20px 2px;
   border-bottom:1px solid var(--line-soft);
 }
@@ -311,14 +318,16 @@
   font-size:clamp(28px,3.2vw,40px);
   font-weight:400;
   letter-spacing:-.028em;
-  line-height:1;
+  /* optical align: cap-height of the marker to the first text line */
+  line-height:1.06;
   font-variant-numeric:tabular-nums;
-  min-width:2.4ch;
-  background:linear-gradient(150deg,#f0763c,#c9491c);
+  display:block; white-space:nowrap;
+  background:linear-gradient(150deg,var(--ember-2),var(--ember));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .ledger-row p{
   margin:0;
+  padding-top:.42em;
   font-size:15.5px;
   color:var(--t-muted);
   letter-spacing:-.006em;
@@ -466,35 +475,39 @@
 /* ══ VIDEO COVER — the Studio mark over the facade ══════════════ */
 .frame-in{display:grid;place-items:center;align-content:center}
 .cover-stack{
-  display:flex;flex-direction:column;align-items:center;
-  gap:30px;
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  padding:clamp(14px,4vw,28px);
 }
+/* cover art and play button share ONE grid cell, so the button
+   layers on top of the mark + name instead of sitting below them */
+.cover-stack > *{ grid-area:1/1; }
 .cover{
-  display:flex;flex-direction:column;align-items:center;gap:20px;
+  display:flex;flex-direction:column;align-items:center;
   text-align:center;pointer-events:none;
+  /* the group shifts up and opens a lane so the centred play
+     button layers into clear space, covering neither element */
+  gap:clamp(44px,12vw,92px);
+  transform:translateY(calc(-1 * clamp(4px,1vw,8px)));
 }
 .cover-mark{
-  width:76px;height:76px;border-radius:22px;
+  width:clamp(48px,11vw,76px);height:clamp(48px,11vw,76px);
+  border-radius:clamp(14px,3.2vw,22px);
   display:grid;place-items:center;
-  background:linear-gradient(140deg,#f0763c,#c9491c 62%,#8f3413);
+  background:linear-gradient(140deg,var(--ember-2),var(--ember) 62%,var(--ember-ink));
   color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 10px 30px -12px rgba(0,0,0,.7);
 }
-.cover-mark svg{width:40px;height:40px}
+.cover-mark svg{width:52%;height:52%}
 .cover-name{
   margin:0;
-  font-size:clamp(30px,4vw,48px);
+  font-size:clamp(19px,4.4vw,48px);
   font-weight:700;
   letter-spacing:-.024em;
   color:#f6f5f1;
 }
 .cover-name em{font-style:normal;color:var(--ember)}
 .frame-in.is-playing .cover-stack{display:none}
-@media(max-width:640px){
-  .cover-mark{width:60px;height:60px;border-radius:17px}
-  .cover-mark svg{width:31px;height:31px}
-}
-
 </style></head><body>
 <title>Brook — AI Systems</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
@@ -622,7 +635,917 @@
 /* explicit dark */
 
 
+
+:root[data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #0a0a09;
+  --paper-2:      #0f0f0d;
+  --ink:          #f6f5f1;
+  --ink-rgb:      246,245,241;
+
+  --t-strong:     rgba(246,245,241,1);
+  --t-body:       rgba(246,245,241,.86);
+  --t-muted:      rgba(246,245,241,.62);
+  --t-faint:      rgba(246,245,241,.52);
+
+  --line:         rgba(246,245,241,.14);
+  --line-soft:    rgba(246,245,241,.085);
+  --line-hair:    rgba(246,245,241,.05);
+
+  --ember:        #eb6834;
+  --ember-2:      #ff8552;
+  --ember-ink:    #ff9a6b;
+
+  --glass-bg:     rgba(30,27,25,.42);
+  --glass-edge:   rgba(255,231,214,.26);
+  --glass-line:   rgba(246,245,241,.09);
+  --glass-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 30px 60px -24px rgba(0,0,0,.75), 0 80px 160px -70px rgba(0,0,0,.9);
+
+  --slab-bg:      rgba(24,22,20,.44);
+  --field:        rgba(255,255,255,.045);
+
+  --glow-a:       rgba(235,104,52,.50);
+  --glow-b:       rgba(235,104,52,.20);
+  --mesh-1:       rgba(235,104,52,.13);
+  --mesh-2:       rgba(235,104,52,.05);
+  --mesh-3:       rgba(201,73,28,.06);
+  --mesh-veil:    rgba(10,10,9,0);
+
+  --spec:         rgba(255,236,222,.85);
+  --btn-ink:      #120d0a;
+
+  --shadow-sm:    0 1px 2px rgba(0,0,0,.5);
+  --shadow-md:    0 18px 40px -18px rgba(0,0,0,.7);
+
+  --ember-rgb:    235,104,52;
+  --cursor-glow:  rgba(255,150,100,.07);
+  --ok:           #6fd39b;
+  --ok-soft:      rgba(111,211,155,.14);
+  --grain-op:     .055;
+  --hdr-stuck-bg:     rgba(14,13,12,.82);
+  --hdr-stuck-shadow: 0 12px 34px -22px rgba(0,0,0,.9);
+  --glass-btn-ink:    #fff;
+  --glass-btn-bg:     rgba(255,255,255,.10);
+  --glass-btn-line:   rgba(255,255,255,.30);
+  --glass-btn-spec:   rgba(255,255,255,.28);
+  --canvas-op:    .78;
+}
+
 /* ══ ALTERNATE PALETTES — default (no attribute) is Ember ══ */
+
+/* ══ PALETTES v2 — OKLCH-derived, AA-verified both modes ══ */
+:root[data-palette="graphite"]{
+  color-scheme: light;
+
+  --paper:        #f7fafe;
+  --paper-2:      #eef3f9;
+  --ink:          #14181b;
+  --ink-rgb:      20,24,27;
+
+  --t-strong:     rgba(20,24,27,1);
+  --t-body:       rgba(20,24,27,.92);
+  --t-muted:      rgba(20,24,27,.66);
+  --t-faint:      rgba(20,24,27,.60);
+
+  --line:         rgba(20,24,27,.14);
+  --line-soft:    rgba(20,24,27,.09);
+  --line-hair:    rgba(20,24,27,.055);
+
+  --ember:        #617284;
+  --ember-2:      #7c8d9e;
+  --ember-ink:    #4c5d6e;
+
+  --glass-bg:     rgba(255,255,255,.58);
+  --glass-edge:   rgba(255,255,255,.9);
+  --glass-line:   rgba(20,24,27,.10);
+  --glass-shadow: 0 1px 2px rgba(20,24,27,.05), 0 22px 44px -20px rgba(20,24,27,.22), 0 60px 120px -60px rgba(20,24,27,.28);
+
+  --slab-bg:      rgba(255,255,255,.5);
+  --field:        rgba(255,255,255,.72);
+
+  --glow-a:       rgba(97,114,132,.34);
+  --glow-b:       rgba(97,114,132,.14);
+  --mesh-1:       rgba(97,114,132,.10);
+  --mesh-2:       rgba(97,114,132,.04);
+  --mesh-3:       rgba(97,114,132,.05);
+  --mesh-veil:    rgba(247,250,254,0);
+
+  --spec:         rgba(255,255,255,.95);
+  --btn-ink:      #f7fafe;
+
+  --shadow-sm:    0 1px 2px rgba(20,24,27,.06);
+  --shadow-md:    0 12px 30px -14px rgba(20,24,27,.28);
+
+  --ember-rgb:    97,114,132;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(97,114,132,.13);
+  --ok:           #337344;
+  --ok-soft:      rgba(51,115,68,.14);
+  --grain-op:     .05;
+  --hdr-stuck-bg:     rgba(249,252,255,.88);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(20,24,27,.42);
+  --glass-btn-ink:    rgba(20,24,27,.92);
+  --glass-btn-bg:     rgba(255,255,255,.62);
+  --glass-btn-line:   rgba(20,24,27,.16);
+  --glass-btn-spec:   rgba(255,255,255,.9);
+  --canvas-op:    .5;
+}
+:root[data-palette="graphite"][data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #080a0e;
+  --paper-2:      #0f1318;
+  --ink:          #edf1f5;
+  --ink-rgb:      237,241,245;
+
+  --t-strong:     rgba(237,241,245,1);
+  --t-body:       rgba(237,241,245,.92);
+  --t-muted:      rgba(237,241,245,.72);
+  --t-faint:      rgba(237,241,245,.62);
+
+  --line:         rgba(237,241,245,.16);
+  --line-soft:    rgba(237,241,245,.10);
+  --line-hair:    rgba(237,241,245,.07);
+
+  --ember:        #7e90a3;
+  --ember-2:      #97a8bb;
+  --ember-ink:    #67788a;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,241,245,.12);
+  --glass-shadow: 0 1px 2px rgba(237,241,245,.05), 0 22px 44px -20px rgba(237,241,245,.5), 0 60px 120px -60px rgba(237,241,245,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(126,144,163,.30);
+  --glow-b:       rgba(126,144,163,.12);
+  --mesh-1:       rgba(126,144,163,.13);
+  --mesh-2:       rgba(126,144,163,.05);
+  --mesh-3:       rgba(126,144,163,.06);
+  --mesh-veil:    rgba(8,10,14,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #080d11;
+
+  --shadow-sm:    0 1px 2px rgba(237,241,245,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,241,245,.55);
+
+  --ember-rgb:    126,144,163;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(126,144,163,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,8,10,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,241,245,.8);
+  --glass-btn-ink:    rgba(237,241,245,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-palette="graphite"]:not([data-theme="light"]){
+  color-scheme: dark;
+
+  --paper:        #080a0e;
+  --paper-2:      #0f1318;
+  --ink:          #edf1f5;
+  --ink-rgb:      237,241,245;
+
+  --t-strong:     rgba(237,241,245,1);
+  --t-body:       rgba(237,241,245,.92);
+  --t-muted:      rgba(237,241,245,.72);
+  --t-faint:      rgba(237,241,245,.62);
+
+  --line:         rgba(237,241,245,.16);
+  --line-soft:    rgba(237,241,245,.10);
+  --line-hair:    rgba(237,241,245,.07);
+
+  --ember:        #7e90a3;
+  --ember-2:      #97a8bb;
+  --ember-ink:    #67788a;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,241,245,.12);
+  --glass-shadow: 0 1px 2px rgba(237,241,245,.05), 0 22px 44px -20px rgba(237,241,245,.5), 0 60px 120px -60px rgba(237,241,245,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(126,144,163,.30);
+  --glow-b:       rgba(126,144,163,.12);
+  --mesh-1:       rgba(126,144,163,.13);
+  --mesh-2:       rgba(126,144,163,.05);
+  --mesh-3:       rgba(126,144,163,.06);
+  --mesh-veil:    rgba(8,10,14,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #080d11;
+
+  --shadow-sm:    0 1px 2px rgba(237,241,245,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,241,245,.55);
+
+  --ember-rgb:    126,144,163;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(126,144,163,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,8,10,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,241,245,.8);
+  --glass-btn-ink:    rgba(237,241,245,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+  }
+}
+:root[data-palette="oxblood"]{
+  color-scheme: light;
+
+  --paper:        #fdf9f8;
+  --paper-2:      #f8f0f0;
+  --ink:          #1a1616;
+  --ink-rgb:      26,22,22;
+
+  --t-strong:     rgba(26,22,22,1);
+  --t-body:       rgba(26,22,22,.92);
+  --t-muted:      rgba(26,22,22,.66);
+  --t-faint:      rgba(26,22,22,.60);
+
+  --line:         rgba(26,22,22,.14);
+  --line-soft:    rgba(26,22,22,.09);
+  --line-hair:    rgba(26,22,22,.055);
+
+  --ember:        #b3484a;
+  --ember-2:      #cd6867;
+  --ember-ink:    #9a3135;
+
+  --glass-bg:     rgba(255,255,255,.58);
+  --glass-edge:   rgba(255,255,255,.9);
+  --glass-line:   rgba(26,22,22,.10);
+  --glass-shadow: 0 1px 2px rgba(26,22,22,.05), 0 22px 44px -20px rgba(26,22,22,.22), 0 60px 120px -60px rgba(26,22,22,.28);
+
+  --slab-bg:      rgba(255,255,255,.5);
+  --field:        rgba(255,255,255,.72);
+
+  --glow-a:       rgba(179,72,74,.34);
+  --glow-b:       rgba(179,72,74,.14);
+  --mesh-1:       rgba(179,72,74,.10);
+  --mesh-2:       rgba(179,72,74,.04);
+  --mesh-3:       rgba(179,72,74,.05);
+  --mesh-veil:    rgba(253,249,248,0);
+
+  --spec:         rgba(255,255,255,.95);
+  --btn-ink:      #fdf9f8;
+
+  --shadow-sm:    0 1px 2px rgba(26,22,22,.06);
+  --shadow-md:    0 12px 30px -14px rgba(26,22,22,.28);
+
+  --ember-rgb:    179,72,74;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(179,72,74,.13);
+  --ok:           #337344;
+  --ok-soft:      rgba(51,115,68,.14);
+  --grain-op:     .05;
+  --hdr-stuck-bg:     rgba(255,250,250,.88);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(26,22,22,.42);
+  --glass-btn-ink:    rgba(26,22,22,.92);
+  --glass-btn-bg:     rgba(255,255,255,.62);
+  --glass-btn-line:   rgba(26,22,22,.16);
+  --glass-btn-spec:   rgba(255,255,255,.9);
+  --canvas-op:    .5;
+}
+:root[data-palette="oxblood"][data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #0d0909;
+  --paper-2:      #171110;
+  --ink:          #f4efee;
+  --ink-rgb:      244,239,238;
+
+  --t-strong:     rgba(244,239,238,1);
+  --t-body:       rgba(244,239,238,.92);
+  --t-muted:      rgba(244,239,238,.72);
+  --t-faint:      rgba(244,239,238,.62);
+
+  --line:         rgba(244,239,238,.16);
+  --line-soft:    rgba(244,239,238,.10);
+  --line-hair:    rgba(244,239,238,.07);
+
+  --ember:        #d76665;
+  --ember-2:      #ee8280;
+  --ember-ink:    #ba4e4f;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(244,239,238,.12);
+  --glass-shadow: 0 1px 2px rgba(244,239,238,.05), 0 22px 44px -20px rgba(244,239,238,.5), 0 60px 120px -60px rgba(244,239,238,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(215,102,101,.30);
+  --glow-b:       rgba(215,102,101,.12);
+  --mesh-1:       rgba(215,102,101,.13);
+  --mesh-2:       rgba(215,102,101,.05);
+  --mesh-3:       rgba(215,102,101,.06);
+  --mesh-veil:    rgba(13,9,9,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #1d0304;
+
+  --shadow-sm:    0 1px 2px rgba(244,239,238,.4);
+  --shadow-md:    0 12px 30px -14px rgba(244,239,238,.55);
+
+  --ember-rgb:    215,102,101;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(215,102,101,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(10,7,7,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(244,239,238,.8);
+  --glass-btn-ink:    rgba(244,239,238,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-palette="oxblood"]:not([data-theme="light"]){
+  color-scheme: dark;
+
+  --paper:        #0d0909;
+  --paper-2:      #171110;
+  --ink:          #f4efee;
+  --ink-rgb:      244,239,238;
+
+  --t-strong:     rgba(244,239,238,1);
+  --t-body:       rgba(244,239,238,.92);
+  --t-muted:      rgba(244,239,238,.72);
+  --t-faint:      rgba(244,239,238,.62);
+
+  --line:         rgba(244,239,238,.16);
+  --line-soft:    rgba(244,239,238,.10);
+  --line-hair:    rgba(244,239,238,.07);
+
+  --ember:        #d76665;
+  --ember-2:      #ee8280;
+  --ember-ink:    #ba4e4f;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(244,239,238,.12);
+  --glass-shadow: 0 1px 2px rgba(244,239,238,.05), 0 22px 44px -20px rgba(244,239,238,.5), 0 60px 120px -60px rgba(244,239,238,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(215,102,101,.30);
+  --glow-b:       rgba(215,102,101,.12);
+  --mesh-1:       rgba(215,102,101,.13);
+  --mesh-2:       rgba(215,102,101,.05);
+  --mesh-3:       rgba(215,102,101,.06);
+  --mesh-veil:    rgba(13,9,9,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #1d0304;
+
+  --shadow-sm:    0 1px 2px rgba(244,239,238,.4);
+  --shadow-md:    0 12px 30px -14px rgba(244,239,238,.55);
+
+  --ember-rgb:    215,102,101;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(215,102,101,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(10,7,7,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(244,239,238,.8);
+  --glass-btn-ink:    rgba(244,239,238,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+  }
+}
+:root[data-palette="sage"]{
+  color-scheme: light;
+
+  --paper:        #f8fbf8;
+  --paper-2:      #eff4f0;
+  --ink:          #151815;
+  --ink-rgb:      21,24,21;
+
+  --t-strong:     rgba(21,24,21,1);
+  --t-body:       rgba(21,24,21,.92);
+  --t-muted:      rgba(21,24,21,.66);
+  --t-faint:      rgba(21,24,21,.60);
+
+  --line:         rgba(21,24,21,.14);
+  --line-soft:    rgba(21,24,21,.09);
+  --line-hair:    rgba(21,24,21,.055);
+
+  --ember:        #4c7a56;
+  --ember-2:      #699472;
+  --ember-ink:    #376441;
+
+  --glass-bg:     rgba(255,255,255,.58);
+  --glass-edge:   rgba(255,255,255,.9);
+  --glass-line:   rgba(21,24,21,.10);
+  --glass-shadow: 0 1px 2px rgba(21,24,21,.05), 0 22px 44px -20px rgba(21,24,21,.22), 0 60px 120px -60px rgba(21,24,21,.28);
+
+  --slab-bg:      rgba(255,255,255,.5);
+  --field:        rgba(255,255,255,.72);
+
+  --glow-a:       rgba(76,122,86,.34);
+  --glow-b:       rgba(76,122,86,.14);
+  --mesh-1:       rgba(76,122,86,.10);
+  --mesh-2:       rgba(76,122,86,.04);
+  --mesh-3:       rgba(76,122,86,.05);
+  --mesh-veil:    rgba(248,251,248,0);
+
+  --spec:         rgba(255,255,255,.95);
+  --btn-ink:      #f8fbf8;
+
+  --shadow-sm:    0 1px 2px rgba(21,24,21,.06);
+  --shadow-md:    0 12px 30px -14px rgba(21,24,21,.28);
+
+  --ember-rgb:    76,122,86;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(76,122,86,.13);
+  --ok:           #337344;
+  --ok-soft:      rgba(51,115,68,.14);
+  --grain-op:     .05;
+  --hdr-stuck-bg:     rgba(249,253,250,.88);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(21,24,21,.42);
+  --glass-btn-ink:    rgba(21,24,21,.92);
+  --glass-btn-bg:     rgba(255,255,255,.62);
+  --glass-btn-line:   rgba(21,24,21,.16);
+  --glass-btn-spec:   rgba(255,255,255,.9);
+  --canvas-op:    .5;
+}
+:root[data-palette="sage"][data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #080b09;
+  --paper-2:      #101410;
+  --ink:          #edf1ee;
+  --ink-rgb:      237,241,238;
+
+  --t-strong:     rgba(237,241,238,1);
+  --t-body:       rgba(237,241,238,.92);
+  --t-muted:      rgba(237,241,238,.72);
+  --t-faint:      rgba(237,241,238,.62);
+
+  --line:         rgba(237,241,238,.16);
+  --line-soft:    rgba(237,241,238,.10);
+  --line-hair:    rgba(237,241,238,.07);
+
+  --ember:        #699872;
+  --ember-2:      #83b08c;
+  --ember-ink:    #52805c;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,241,238,.12);
+  --glass-shadow: 0 1px 2px rgba(237,241,238,.05), 0 22px 44px -20px rgba(237,241,238,.5), 0 60px 120px -60px rgba(237,241,238,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(105,152,114,.30);
+  --glow-b:       rgba(105,152,114,.12);
+  --mesh-1:       rgba(105,152,114,.13);
+  --mesh-2:       rgba(105,152,114,.05);
+  --mesh-3:       rgba(105,152,114,.06);
+  --mesh-veil:    rgba(8,11,9,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #050f07;
+
+  --shadow-sm:    0 1px 2px rgba(237,241,238,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,241,238,.55);
+
+  --ember-rgb:    105,152,114;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(105,152,114,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,9,7,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,241,238,.8);
+  --glass-btn-ink:    rgba(237,241,238,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-palette="sage"]:not([data-theme="light"]){
+  color-scheme: dark;
+
+  --paper:        #080b09;
+  --paper-2:      #101410;
+  --ink:          #edf1ee;
+  --ink-rgb:      237,241,238;
+
+  --t-strong:     rgba(237,241,238,1);
+  --t-body:       rgba(237,241,238,.92);
+  --t-muted:      rgba(237,241,238,.72);
+  --t-faint:      rgba(237,241,238,.62);
+
+  --line:         rgba(237,241,238,.16);
+  --line-soft:    rgba(237,241,238,.10);
+  --line-hair:    rgba(237,241,238,.07);
+
+  --ember:        #699872;
+  --ember-2:      #83b08c;
+  --ember-ink:    #52805c;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,241,238,.12);
+  --glass-shadow: 0 1px 2px rgba(237,241,238,.05), 0 22px 44px -20px rgba(237,241,238,.5), 0 60px 120px -60px rgba(237,241,238,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(105,152,114,.30);
+  --glow-b:       rgba(105,152,114,.12);
+  --mesh-1:       rgba(105,152,114,.13);
+  --mesh-2:       rgba(105,152,114,.05);
+  --mesh-3:       rgba(105,152,114,.06);
+  --mesh-veil:    rgba(8,11,9,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #050f07;
+
+  --shadow-sm:    0 1px 2px rgba(237,241,238,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,241,238,.55);
+
+  --ember-rgb:    105,152,114;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(105,152,114,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,9,7,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,241,238,.8);
+  --glass-btn-ink:    rgba(237,241,238,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+  }
+}
+:root[data-palette="cobalt"]{
+  color-scheme: light;
+
+  --paper:        #f7fafe;
+  --paper-2:      #eef3f9;
+  --ink:          #15171b;
+  --ink-rgb:      21,23,27;
+
+  --t-strong:     rgba(21,23,27,1);
+  --t-body:       rgba(21,23,27,.92);
+  --t-muted:      rgba(21,23,27,.66);
+  --t-faint:      rgba(21,23,27,.60);
+
+  --line:         rgba(21,23,27,.14);
+  --line-soft:    rgba(21,23,27,.09);
+  --line-hair:    rgba(21,23,27,.055);
+
+  --ember:        #2770c5;
+  --ember-2:      #4d8ede;
+  --ember-ink:    #0859ac;
+
+  --glass-bg:     rgba(255,255,255,.58);
+  --glass-edge:   rgba(255,255,255,.9);
+  --glass-line:   rgba(21,23,27,.10);
+  --glass-shadow: 0 1px 2px rgba(21,23,27,.05), 0 22px 44px -20px rgba(21,23,27,.22), 0 60px 120px -60px rgba(21,23,27,.28);
+
+  --slab-bg:      rgba(255,255,255,.5);
+  --field:        rgba(255,255,255,.72);
+
+  --glow-a:       rgba(39,112,197,.34);
+  --glow-b:       rgba(39,112,197,.14);
+  --mesh-1:       rgba(39,112,197,.10);
+  --mesh-2:       rgba(39,112,197,.04);
+  --mesh-3:       rgba(39,112,197,.05);
+  --mesh-veil:    rgba(247,250,254,0);
+
+  --spec:         rgba(255,255,255,.95);
+  --btn-ink:      #f7fafe;
+
+  --shadow-sm:    0 1px 2px rgba(21,23,27,.06);
+  --shadow-md:    0 12px 30px -14px rgba(21,23,27,.28);
+
+  --ember-rgb:    39,112,197;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(39,112,197,.13);
+  --ok:           #337344;
+  --ok-soft:      rgba(51,115,68,.14);
+  --grain-op:     .05;
+  --hdr-stuck-bg:     rgba(249,252,255,.88);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(21,23,27,.42);
+  --glass-btn-ink:    rgba(21,23,27,.92);
+  --glass-btn-bg:     rgba(255,255,255,.62);
+  --glass-btn-line:   rgba(21,23,27,.16);
+  --glass-btn-spec:   rgba(255,255,255,.9);
+  --canvas-op:    .5;
+}
+:root[data-palette="cobalt"][data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #080a0e;
+  --paper-2:      #0f1318;
+  --ink:          #edf0f5;
+  --ink-rgb:      237,240,245;
+
+  --t-strong:     rgba(237,240,245,1);
+  --t-body:       rgba(237,240,245,.92);
+  --t-muted:      rgba(237,240,245,.72);
+  --t-faint:      rgba(237,240,245,.62);
+
+  --line:         rgba(237,240,245,.16);
+  --line-soft:    rgba(237,240,245,.10);
+  --line-hair:    rgba(237,240,245,.07);
+
+  --ember:        #468fe8;
+  --ember-2:      #66aaff;
+  --ember-ink:    #2e76cb;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,240,245,.12);
+  --glass-shadow: 0 1px 2px rgba(237,240,245,.05), 0 22px 44px -20px rgba(237,240,245,.5), 0 60px 120px -60px rgba(237,240,245,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(70,143,232,.30);
+  --glow-b:       rgba(70,143,232,.12);
+  --mesh-1:       rgba(70,143,232,.13);
+  --mesh-2:       rgba(70,143,232,.05);
+  --mesh-3:       rgba(70,143,232,.06);
+  --mesh-veil:    rgba(8,10,14,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #000c22;
+
+  --shadow-sm:    0 1px 2px rgba(237,240,245,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,240,245,.55);
+
+  --ember-rgb:    70,143,232;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(70,143,232,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,8,11,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,240,245,.8);
+  --glass-btn-ink:    rgba(237,240,245,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-palette="cobalt"]:not([data-theme="light"]){
+  color-scheme: dark;
+
+  --paper:        #080a0e;
+  --paper-2:      #0f1318;
+  --ink:          #edf0f5;
+  --ink-rgb:      237,240,245;
+
+  --t-strong:     rgba(237,240,245,1);
+  --t-body:       rgba(237,240,245,.92);
+  --t-muted:      rgba(237,240,245,.72);
+  --t-faint:      rgba(237,240,245,.62);
+
+  --line:         rgba(237,240,245,.16);
+  --line-soft:    rgba(237,240,245,.10);
+  --line-hair:    rgba(237,240,245,.07);
+
+  --ember:        #468fe8;
+  --ember-2:      #66aaff;
+  --ember-ink:    #2e76cb;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(237,240,245,.12);
+  --glass-shadow: 0 1px 2px rgba(237,240,245,.05), 0 22px 44px -20px rgba(237,240,245,.5), 0 60px 120px -60px rgba(237,240,245,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(70,143,232,.30);
+  --glow-b:       rgba(70,143,232,.12);
+  --mesh-1:       rgba(70,143,232,.13);
+  --mesh-2:       rgba(70,143,232,.05);
+  --mesh-3:       rgba(70,143,232,.06);
+  --mesh-veil:    rgba(8,10,14,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #000c22;
+
+  --shadow-sm:    0 1px 2px rgba(237,240,245,.4);
+  --shadow-md:    0 12px 30px -14px rgba(237,240,245,.55);
+
+  --ember-rgb:    70,143,232;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(70,143,232,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(7,8,11,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(237,240,245,.8);
+  --glass-btn-ink:    rgba(237,240,245,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+  }
+}
+:root[data-palette="amber"]{
+  color-scheme: light;
+
+  --paper:        #fdfaf6;
+  --paper-2:      #f6f2ec;
+  --ink:          #191713;
+  --ink-rgb:      25,23,19;
+
+  --t-strong:     rgba(25,23,19,1);
+  --t-body:       rgba(25,23,19,.92);
+  --t-muted:      rgba(25,23,19,.66);
+  --t-faint:      rgba(25,23,19,.60);
+
+  --line:         rgba(25,23,19,.14);
+  --line-soft:    rgba(25,23,19,.09);
+  --line-hair:    rgba(25,23,19,.055);
+
+  --ember:        #a15f00;
+  --ember-2:      #b87a22;
+  --ember-ink:    #894900;
+
+  --glass-bg:     rgba(255,255,255,.58);
+  --glass-edge:   rgba(255,255,255,.9);
+  --glass-line:   rgba(25,23,19,.10);
+  --glass-shadow: 0 1px 2px rgba(25,23,19,.05), 0 22px 44px -20px rgba(25,23,19,.22), 0 60px 120px -60px rgba(25,23,19,.28);
+
+  --slab-bg:      rgba(255,255,255,.5);
+  --field:        rgba(255,255,255,.72);
+
+  --glow-a:       rgba(161,95,0,.34);
+  --glow-b:       rgba(161,95,0,.14);
+  --mesh-1:       rgba(161,95,0,.10);
+  --mesh-2:       rgba(161,95,0,.04);
+  --mesh-3:       rgba(161,95,0,.05);
+  --mesh-veil:    rgba(253,250,246,0);
+
+  --spec:         rgba(255,255,255,.95);
+  --btn-ink:      #fdfaf6;
+
+  --shadow-sm:    0 1px 2px rgba(25,23,19,.06);
+  --shadow-md:    0 12px 30px -14px rgba(25,23,19,.28);
+
+  --ember-rgb:    161,95,0;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(161,95,0,.13);
+  --ok:           #337344;
+  --ok-soft:      rgba(51,115,68,.14);
+  --grain-op:     .05;
+  --hdr-stuck-bg:     rgba(254,251,247,.88);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(25,23,19,.42);
+  --glass-btn-ink:    rgba(25,23,19,.92);
+  --glass-btn-bg:     rgba(255,255,255,.62);
+  --glass-btn-line:   rgba(25,23,19,.16);
+  --glass-btn-spec:   rgba(255,255,255,.9);
+  --canvas-op:    .5;
+}
+:root[data-palette="amber"][data-theme="dark"]{
+  color-scheme: dark;
+
+  --paper:        #0c0a06;
+  --paper-2:      #16120d;
+  --ink:          #f3efeb;
+  --ink-rgb:      243,239,235;
+
+  --t-strong:     rgba(243,239,235,1);
+  --t-body:       rgba(243,239,235,.92);
+  --t-muted:      rgba(243,239,235,.72);
+  --t-faint:      rgba(243,239,235,.62);
+
+  --line:         rgba(243,239,235,.16);
+  --line-soft:    rgba(243,239,235,.10);
+  --line-hair:    rgba(243,239,235,.07);
+
+  --ember:        #c27c09;
+  --ember-2:      #d7953f;
+  --ember-ink:    #a76400;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(243,239,235,.12);
+  --glass-shadow: 0 1px 2px rgba(243,239,235,.05), 0 22px 44px -20px rgba(243,239,235,.5), 0 60px 120px -60px rgba(243,239,235,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(194,124,9,.30);
+  --glow-b:       rgba(194,124,9,.12);
+  --mesh-1:       rgba(194,124,9,.13);
+  --mesh-2:       rgba(194,124,9,.05);
+  --mesh-3:       rgba(194,124,9,.06);
+  --mesh-veil:    rgba(12,10,6,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #180700;
+
+  --shadow-sm:    0 1px 2px rgba(243,239,235,.4);
+  --shadow-md:    0 12px 30px -14px rgba(243,239,235,.55);
+
+  --ember-rgb:    194,124,9;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(194,124,9,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(10,8,6,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(243,239,235,.8);
+  --glass-btn-ink:    rgba(243,239,235,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-palette="amber"]:not([data-theme="light"]){
+  color-scheme: dark;
+
+  --paper:        #0c0a06;
+  --paper-2:      #16120d;
+  --ink:          #f3efeb;
+  --ink-rgb:      243,239,235;
+
+  --t-strong:     rgba(243,239,235,1);
+  --t-body:       rgba(243,239,235,.92);
+  --t-muted:      rgba(243,239,235,.72);
+  --t-faint:      rgba(243,239,235,.62);
+
+  --line:         rgba(243,239,235,.16);
+  --line-soft:    rgba(243,239,235,.10);
+  --line-hair:    rgba(243,239,235,.07);
+
+  --ember:        #c27c09;
+  --ember-2:      #d7953f;
+  --ember-ink:    #a76400;
+
+  --glass-bg:     rgba(255,255,255,.055);
+  --glass-edge:   rgba(255,255,255,.14);
+  --glass-line:   rgba(243,239,235,.12);
+  --glass-shadow: 0 1px 2px rgba(243,239,235,.05), 0 22px 44px -20px rgba(243,239,235,.5), 0 60px 120px -60px rgba(243,239,235,.6);
+
+  --slab-bg:      rgba(255,255,255,.045);
+  --field:        rgba(255,255,255,.07);
+
+  --glow-a:       rgba(194,124,9,.30);
+  --glow-b:       rgba(194,124,9,.12);
+  --mesh-1:       rgba(194,124,9,.13);
+  --mesh-2:       rgba(194,124,9,.05);
+  --mesh-3:       rgba(194,124,9,.06);
+  --mesh-veil:    rgba(12,10,6,0);
+
+  --spec:         rgba(255,255,255,.30);
+  --btn-ink:      #180700;
+
+  --shadow-sm:    0 1px 2px rgba(243,239,235,.4);
+  --shadow-md:    0 12px 30px -14px rgba(243,239,235,.55);
+
+  --ember-rgb:    194,124,9;
+  --spring:       cubic-bezier(.34,1.4,.44,1);
+  --cursor-glow:  rgba(194,124,9,.16);
+  --ok:           #62bb78;
+  --ok-soft:      rgba(98,187,120,.18);
+  --grain-op:     .07;
+  --hdr-stuck-bg:     rgba(10,8,6,.86);
+  --hdr-stuck-shadow: 0 12px 34px -24px rgba(243,239,235,.8);
+  --glass-btn-ink:    rgba(243,239,235,.94);
+  --glass-btn-bg:     rgba(255,255,255,.09);
+  --glass-btn-line:   rgba(255,255,255,.16);
+  --glass-btn-spec:   rgba(255,255,255,.22);
+  --canvas-op:    .42;
+  }
+}
+
 :root[data-palette="indigo"]{
   color-scheme: light;
 
@@ -1296,62 +2219,6 @@
   }
 }
 
-:root[data-theme="dark"]{
-  color-scheme: dark;
-
-  --paper:        #0a0a09;
-  --paper-2:      #0f0f0d;
-  --ink:          #f6f5f1;
-  --ink-rgb:      246,245,241;
-
-  --t-strong:     rgba(246,245,241,1);
-  --t-body:       rgba(246,245,241,.86);
-  --t-muted:      rgba(246,245,241,.62);
-  --t-faint:      rgba(246,245,241,.52);
-
-  --line:         rgba(246,245,241,.14);
-  --line-soft:    rgba(246,245,241,.085);
-  --line-hair:    rgba(246,245,241,.05);
-
-  --ember:        #eb6834;
-  --ember-2:      #ff8552;
-  --ember-ink:    #ff9a6b;
-
-  --glass-bg:     rgba(30,27,25,.42);
-  --glass-edge:   rgba(255,231,214,.26);
-  --glass-line:   rgba(246,245,241,.09);
-  --glass-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 30px 60px -24px rgba(0,0,0,.75), 0 80px 160px -70px rgba(0,0,0,.9);
-
-  --slab-bg:      rgba(24,22,20,.44);
-  --field:        rgba(255,255,255,.045);
-
-  --glow-a:       rgba(235,104,52,.50);
-  --glow-b:       rgba(235,104,52,.20);
-  --mesh-1:       rgba(235,104,52,.13);
-  --mesh-2:       rgba(235,104,52,.05);
-  --mesh-3:       rgba(201,73,28,.06);
-  --mesh-veil:    rgba(10,10,9,0);
-
-  --spec:         rgba(255,236,222,.85);
-  --btn-ink:      #120d0a;
-
-  --shadow-sm:    0 1px 2px rgba(0,0,0,.5);
-  --shadow-md:    0 18px 40px -18px rgba(0,0,0,.7);
-
-  --ember-rgb:    235,104,52;
-  --cursor-glow:  rgba(255,150,100,.07);
-  --ok:           #6fd39b;
-  --ok-soft:      rgba(111,211,155,.14);
-  --grain-op:     .055;
-  --hdr-stuck-bg:     rgba(14,13,12,.82);
-  --hdr-stuck-shadow: 0 12px 34px -22px rgba(0,0,0,.9);
-  --glass-btn-ink:    #fff;
-  --glass-btn-bg:     rgba(255,255,255,.10);
-  --glass-btn-line:   rgba(255,255,255,.30);
-  --glass-btn-spec:   rgba(255,255,255,.28);
-  --canvas-op:    .78;
-}
-
 /* ─────────────────────────────────────────────────────────────
    BASE
    ───────────────────────────────────────────────────────────── */
@@ -1988,28 +2855,42 @@ html.js .track.armed.in i{ transform:scaleX(var(--fill,1)); }
 .frame-in{
   position:relative; aspect-ratio:16/9; border-radius:9px; overflow:hidden;
   background:
-    radial-gradient(90% 120% at 50% 8%, rgba(235,104,52,.14), transparent 60%),
+    radial-gradient(90% 120% at 50% 8%, color-mix(in srgb, var(--ember-2) 22%, transparent), transparent 60%),
     linear-gradient(165deg, #191818 0%, #0c0c0b 100%);
   display:grid; place-items:center;
   border:1px solid rgba(255,255,255,.06);
 }
 .play{
-  position:relative;
-  width:82px; height:82px; border-radius:50%; border:1px solid rgba(255,255,255,.22);
-  background:rgba(255,255,255,.09);
-  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  position:relative; z-index:2;
+  isolation:isolate;
+  width:clamp(54px,11vw,82px); height:clamp(54px,11vw,82px); border-radius:50%; border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.13);
+  backdrop-filter:blur(12px) saturate(150%); -webkit-backdrop-filter:blur(12px) saturate(150%);
   display:grid; place-items:center; cursor:pointer;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 16px 40px -14px rgba(0,0,0,.8), 0 0 50px -8px var(--glow-b);
   transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
   color:#fff;
 }
 .play:hover{ background:rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.36), 0 20px 50px -14px rgba(0,0,0,.85), 0 0 70px -6px var(--glow-a); }
-.play svg{ width:22px; height:22px; margin-left:4px; }
+.play svg{ width:28%; height:28%; margin-left:6%; }
 .frame-meta{
-  position:absolute; left:18px; bottom:16px; right:18px;
-  display:flex; justify-content:space-between; align-items:flex-end; gap:16px;
-  color:rgba(255,255,255,.72); font-size:12.5px; letter-spacing:.03em; text-transform:uppercase;
+  position:absolute; left:clamp(10px,2.4vw,18px); right:clamp(10px,2.4vw,18px);
+  bottom:clamp(8px,1.8vw,16px);
+  display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+  color:rgba(255,255,255,.72); font-size:clamp(9px,1.4vw,12.5px);
+  letter-spacing:.03em; text-transform:uppercase;
   pointer-events:none;
+}
+/* the caption has no room to clear the cover art on small frames */
+@media(max-width:640px){ .frame-meta{ display:none } }
+/* nav CTA: keep it on one line by shrinking, not by overflowing */
+@media(max-width:720px){
+  .navlinks a.ghost,.ghost{
+    font-size:11px; padding:9px 13px; letter-spacing:.05em; gap:5px;
+  }
+}
+@media(max-width:420px){
+  .navlinks a.ghost,.ghost{ font-size:10px; padding:8px 11px; letter-spacing:.04em; }
 }
 
 /* how it works — a vertical ledger, not numbered steps */
@@ -3017,4 +3898,6 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 (function(){var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();})();
 </script>
 
+<!-- Theme lab: local only. This file is gitignored and 404s in production. -->
+<script src="theme-lab.js"></script>
 </body></html>
