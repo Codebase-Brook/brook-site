@@ -1,0 +1,21 @@
+<body style="margin:0"><pre id=o style="font:12px monospace;padding:10px;white-space:pre-wrap">running…</pre>
+<script>
+var log=[],o=document.getElementById('o');
+function show(){o.textContent=log.join('\n');}
+log.push('origin: '+location.origin); show();
+var fd=new FormData();
+fd.append('access_key','ffa4eddb-d297-4b49-84cf-74c66aca80d1');
+fd.append('subject','TEST — /apply wiring check (safe to delete)');
+fd.append('from_name','buildwithbrook.com');
+fd.append('name','Wiring Test');
+fd.append('business','buildwithbrook.com');
+fd.append('email','brookconnects@gmail.com');
+fd.append('business_type','test');
+fd.append('list_size','Not sure');
+fd.append('list_location','A spreadsheet or CSV');
+fd.append('notes','Automated check that the live /apply form reaches the inbox. Safe to delete.');
+fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
+ .then(function(r){ log.push('status: '+r.status); show(); return r.json(); })
+ .then(function(j){ log.push('success: '+j.success); log.push('message: '+(j.message||'')); show(); document.title='ok'; })
+ .catch(function(e){ log.push('FAILED: '+e.message); show(); document.title='ok'; });
+</script></body>
