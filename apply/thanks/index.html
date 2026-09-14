@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="I build AI systems that win back the customers you already had. Every message drafted for your approval — you stay the human who hits send.">
-<meta property="og:title" content="Brook — AI Systems for small business">
-<meta property="og:description" content="Fill next month's calendar with clients you already had.">
+<meta name="description" content="Your pilot application is in. I reply within two business days.">
+<meta property="og:title" content="Application received">
+<meta property="og:description" content="Your pilot application is in. I reply within two business days.">
 <meta property="og:type" content="website">
+<meta name="robots" content="noindex,nofollow">
+<title>Application received — Brook</title>
 <link rel="icon" href="../../brook.jpg">
-<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
+
+<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#f9f9f7;color:#131312}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
 /* ── nav CTA pill — Morningside / LeftClick pattern ── */
 
 
@@ -499,8 +502,6 @@
 .cover-name em{font-style:normal;color:var(--ember)}
 .frame-in.is-playing .cover-stack{display:none}
 </style></head><body>
-<title>Reactivation Studio — Brook</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────────────────────────
    TOKENS — one ink, many alphas. Light is the default.
@@ -2999,13 +3000,182 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
   .progress i{ transition:none !important; }
 }
 </style>
+<style>
+/* ══ APPLY PAGE ══════════════════════════════════════════════ */
+.apply-main{ padding:clamp(96px,12vw,140px) 0 clamp(60px,8vw,96px); }
 
+.apply-head{ max-width:660px; margin:0 auto clamp(30px,4vw,44px); text-align:center; }
+.apply-kicker{
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:11.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--t-muted); margin:0 0 16px;
+}
+.apply-kicker i{
+  width:6px; height:6px; border-radius:50%; background:var(--ember); display:block; flex:none;
+}
+.apply-h1{
+  margin:0 0 14px;
+  font-size:clamp(30px,5.2vw,50px); font-weight:700; line-height:1.06;
+  letter-spacing:-.028em; color:var(--t-strong);
+}
+.apply-h1 em{ font-style:normal; color:var(--ember); }
+.apply-sub{
+  margin:0 auto; max-width:54ch;
+  font-size:clamp(15px,1.6vw,17px); line-height:1.6; color:var(--t-muted);
+}
 
-<div class="progress" aria-hidden="true"><i id="progBar"></i></div>
-<div class="field" id="fieldLayer" aria-hidden="true"></div>
-<div class="hearth" id="hearth" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+/* the three things they get — keeps the offer visible while they fill it in */
+.apply-terms{
+  max-width:660px; margin:clamp(26px,3.5vw,36px) auto 0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--line-soft); border:1px solid var(--line-soft);
+  border-radius:13px; overflow:hidden;
+}
+.apply-terms div{ background:var(--paper); padding:15px 14px; text-align:center; }
+.apply-terms b{
+  display:block; font-size:clamp(17px,2.4vw,21px); font-weight:600;
+  letter-spacing:-.02em; color:var(--ember); margin-bottom:3px;
+}
+.apply-terms span{ font-size:12px; color:var(--t-faint); letter-spacing:-.004em; }
+@media(max-width:560px){
+  .apply-terms{ grid-template-columns:1fr; }
+  .apply-terms div{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; text-align:left; }
+  .apply-terms b{ margin:0; }
+}
 
+/* form shell */
+.apply-card{
+  max-width:660px; margin:clamp(28px,4vw,40px) auto 0;
+  border:1px solid var(--glass-line); border-radius:16px;
+  background:var(--slab-bg);
+  box-shadow:var(--shadow-sm);
+  padding:clamp(8px,1.6vw,14px);
+}
+.apply-embed{ min-height:560px; }
+.apply-embed iframe{ width:100%; border:0; display:block; border-radius:11px; }
+
+/* fallback shown until the form is wired */
+.apply-fallback{ padding:clamp(26px,4vw,40px) clamp(20px,3vw,32px); text-align:center; }
+.apply-fallback p{ margin:0 0 18px; color:var(--t-muted); font-size:15px; line-height:1.6; }
+.apply-fallback .ghost{ margin-top:2px; }
+
+.apply-foot{
+  max-width:660px; margin:22px auto 0; text-align:center;
+  font-size:13px; line-height:1.6; color:var(--t-faint);
+}
+.apply-foot a{ color:var(--t-muted); text-decoration:underline; text-underline-offset:2px; }
+
+/* ── thank-you ── */
+.ty-wrap{ max-width:600px; margin:0 auto; text-align:center; }
+.ty-mark{
+  width:74px; height:74px; border-radius:22px; margin:0 auto 26px;
+  display:grid; place-items:center; color:#fff;
+  background:linear-gradient(140deg,var(--ember-2),var(--ember) 62%,var(--ember-ink));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 14px 34px -14px var(--glow-a);
+}
+.ty-mark svg{ width:36px; height:36px; }
+.ty-steps{
+  margin:clamp(28px,4vw,40px) auto 0; max-width:520px;
+  border-top:1px solid var(--line-soft); text-align:left;
+}
+.ty-step{
+  display:grid; grid-template-columns:2.4ch 1fr; gap:6px 20px;
+  align-items:start; padding:18px 2px;
+  border-bottom:1px solid var(--line-soft);
+}
+.ty-step b{
+  font-size:clamp(20px,2.6vw,26px); font-weight:400; line-height:1.15;
+  letter-spacing:-.026em; font-variant-numeric:tabular-nums;
+  background:linear-gradient(150deg,var(--ember-2),var(--ember));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.ty-step p{ margin:0; padding-top:.3em; font-size:15px; line-height:1.55; color:var(--t-muted); }
+
+/* ── native application form ─────────────────────────────── */
+.af{ padding:clamp(20px,3vw,30px) clamp(18px,2.6vw,28px) clamp(22px,3vw,30px); }
+.af-bot{ display:none !important; }
+
+.af-row{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,2vw,20px); }
+@media(max-width:620px){ .af-row{ grid-template-columns:1fr; } }
+
+.af-field{ display:block; margin-bottom:clamp(16px,2.2vw,22px); }
+/* the row is the spacing unit, not the fields inside it */
+.af-row{ margin-bottom:clamp(16px,2.2vw,22px); }
+.af-row .af-field{ margin-bottom:0; }
+.af-fs{ border:0; padding:0; margin-inline:0; }
+
+.af-label{
+  display:block; margin-bottom:7px;
+  font-size:13.5px; font-weight:600; letter-spacing:-.004em; color:var(--t-strong);
+}
+.af-label em{ font-style:normal; font-weight:400; color:var(--t-faint); }
+.af-help{ display:block; margin:-2px 0 10px; font-size:12.5px; line-height:1.5; color:var(--t-faint); }
+
+.af input[type=text], .af input[type=email], .af select, .af textarea{
+  width:100%; box-sizing:border-box;
+  font:inherit; font-size:15px; color:var(--t-strong);
+  background:var(--field);
+  border:1px solid var(--line); border-radius:10px;
+  padding:11px 13px;
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  -webkit-appearance:none; appearance:none;
+}
+.af textarea{ resize:vertical; min-height:96px; line-height:1.55; }
+.af select{
+  background-image:linear-gradient(45deg,transparent 50%,var(--t-muted) 50%),
+                   linear-gradient(135deg,var(--t-muted) 50%,transparent 50%);
+  background-position:calc(100% - 19px) calc(50% + 2px), calc(100% - 14px) calc(50% + 2px);
+  background-size:5px 5px, 5px 5px; background-repeat:no-repeat;
+  padding-right:38px; cursor:pointer;
+}
+.af ::placeholder{ color:var(--t-faint); opacity:1; }
+.af input:focus, .af select:focus, .af textarea:focus{
+  outline:none; border-color:var(--ember);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--ember) 18%, transparent);
+}
+.af input:user-invalid, .af select:user-invalid{
+  border-color:color-mix(in srgb, #d1453b 62%, var(--line));
+}
+
+.af-choices{ display:flex; flex-wrap:wrap; gap:8px; }
+.af-choice{ position:relative; }
+.af-choice input{ position:absolute; opacity:0; width:0; height:0; }
+.af-choice span{
+  display:block; cursor:pointer;
+  font-size:13.5px; letter-spacing:-.004em; color:var(--t-muted);
+  background:var(--field); border:1px solid var(--line);
+  border-radius:9px; padding:9px 14px;
+  transition:border-color .18s ease, color .18s ease, background .18s ease;
+}
+.af-choice span:hover{ color:var(--t-strong); border-color:var(--line); }
+.af-choice input:checked + span{
+  color:#fff; border-color:transparent;
+  background:linear-gradient(168deg, var(--ember-2) 0%, var(--ember) 60%,
+             color-mix(in srgb, var(--ember) 84%, #000) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24);
+}
+.af-choice input:focus-visible + span{
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--ember) 22%, transparent);
+}
+
+.af-submit{
+  margin-top:4px; width:100%; justify-content:center;
+  border:0; cursor:pointer; font-family:inherit;
+}
+.af-submit[disabled]{ opacity:.6; cursor:default; }
+
+.af-status{
+  margin:12px 0 0; min-height:1.2em;
+  font-size:13.5px; line-height:1.5; text-align:center; color:var(--t-muted);
+}
+.af-status.is-err{ color:#c0392b; }
+:root[data-theme="dark"] .af-status.is-err{ color:#ff8f84; }
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .af-status.is-err{ color:#ff8f84; }
+}
+</style>
+
+</head><body>
 <header class="hdr" id="hdr">
   <div class="hdr-in">
     <a class="brand" href="../../"><b>BROOK</b><i class="brand-bar" aria-hidden="true"></i><span>AI&nbsp;Systems</span></a>
@@ -3015,7 +3185,7 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
           <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="navdrop-menu" id="navdropMenu" role="menu" aria-labelledby="navdropBtn">
-          <a role="menuitem" href="./">Reactivation Studio</a>
+          <a role="menuitem" href="../../products/reactivation-studio/">Reactivation Studio</a>
         </div>
       </div>
       <a class="hide-sm" href="../../#brook">About</a>
@@ -3023,342 +3193,38 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
         <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
         <svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.2A8.2 8.2 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2z"/></svg>
       </button>
-      <a class="ghost" href="#pilot">Pilot program</a>
+      <a class="ghost" href="../../products/reactivation-studio/#pilot">Pilot program</a>
     </nav>
   </div>
 </header>
+<main class="apply-main">
+  <div class="wrap">
 
-<main id="top">
-
-  <!-- ══ HERO ══ -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-copy">
-        <p class="eyebrow eyebrow--onfield r d8">Reactivation Studio &middot; done for you</p>
-        <h1 class="r d1">Fill next month's calendar with clients you <em>already had.</em></h1>
-        <p class="hero-sub r d4">Somewhere in your booking software are hundreds of people who were your customers once, liked your service, and never came back. Reactivation Studio brings them back by writing a personal email to every one of them, then handles the replies and tells you who is ready to book.</p>
-        <div class="hero-cta r d5">
-          <a class="btn btn-onfield lit" href="#pilot">Ask about the pilot
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-glass lit" href="#demo">Watch three minutes</a>
-        </div>
-        <p class="hero-note r d6">Three pilot spots. No sales call &mdash; everything happens over email.</p>
+    <div class="ty-wrap reveal">
+      <div class="ty-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>
       </div>
-    </div>
-  </section>
+      <h1 class="apply-h1">That is in.</h1>
+      <p class="apply-sub">
+        I have your application and I read every one myself.
+        You will hear back within two business days either way.
+      </p>
 
-  <!-- ══ SHOWCASE — the console, its own section ══ -->
-  <section class="showcase" id="showcase">
-    <div class="wrap">
-      <p class="eyebrow show-eyebrow">Major Functions</p>
-      <h2 class="show-h2">Four Screens, Main Touchpoints.</h2>
-    </div>
-
-    <div class="carousel" id="carousel">
-      <div class="car-track" id="carTrack">
-
-        <figure class="car-slide" data-i="0">
-          <div class="slab lit"><img src="../../studio-1-knowledge.png" alt="The Client and knowledge screen: the knowledge pack holding the business's services, prices, hours, voice and booking link." width="1600" height="1000" loading="lazy"></div>
-          <figcaption><b>1 · The knowledge pack</b> Everything the system knows about the business — services, real prices, hours, voice, booking link. This is its only source of truth.</figcaption>
-        </figure>
-
-        <figure class="car-slide" data-i="1">
-          <div class="slab lit"><img src="../../studio-2-drafts.png" alt="The Send wake-ups screen showing five drafted emails, each personalised to the customer's last treatment, waiting for approval." width="1600" height="1000" loading="lazy"></div>
-          <figcaption><b>2 · Every message, drafted</b> One email per customer, each written from what they actually came in for. Nothing is sent — you read them and approve.</figcaption>
-        </figure>
-
-        <figure class="car-slide" data-i="2">
-          <div class="slab lit"><img src="../../studio-3-replies.png" alt="The Handle replies screen: a customer's reply matched to their contact, with an AI-drafted response waiting for review." width="1600" height="1000" loading="lazy"></div>
-          <figcaption><b>3 · Replies come back to you</b> When someone answers, the system drafts the response and waits. Anything medical or sensitive is escalated to a human instead.</figcaption>
-        </figure>
-
-        <figure class="car-slide" data-i="3">
-          <div class="slab lit"><img src="../../studio-4-overview.png" alt="The Overview dashboard: one contact escalated for a human, plus contacts, reached, replied, hot leads, booked and confirmed revenue." width="1600" height="1000" loading="lazy"></div>
-          <figcaption><b>4 · What actually happened</b> Hot leads and escalations sit at the top where you cannot miss them. 244 imported, 2 reached on this test run — and revenue is only counted once a booking is attested.</figcaption>
-        </figure>
-
+      <div class="ty-steps">
+        <div class="ty-step"><b>1</b><p>I check whether reactivation will actually work for your list. If it will not, I tell you plainly rather than take the pilot.</p></div>
+        <div class="ty-step"><b>2</b><p>If it is a fit, I ask for a customer export &mdash; a CSV from your booking software, or whatever you already have.</p></div>
+        <div class="ty-step"><b>3</b><p>I build the campaign and send you every message as a draft. Nothing goes out until you approve it.</p></div>
       </div>
 
-      <div class="car-ui wrap">
-        <button class="car-btn" id="carPrev" type="button" aria-label="Previous screen">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="car-dots" id="carDots" role="tablist" aria-label="Choose a screen"></div>
-        <button class="car-btn" id="carNext" type="button" aria-label="Next screen">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <p class="stage-caption">
-        <span><b>Sample data</b> &mdash; "Lumen Aesthetics", a made-up med spa I built to test on. Customer addresses are blurred.</span>
+      <p class="apply-foot" style="margin-top:30px">
+        Nothing to do right now. If you want the background in the meantime,
+        <a href="../../products/reactivation-studio/#demo">the demo is here</a>.
       </p>
     </div>
-  </section>
 
-  <!-- ══ PROBLEM ══ -->
-  <section id="problem" class="pad">
-    <div class="wrap">
-      <div class="cols">
-        <div class="stick reveal">
-          <p class="eyebrow">The quiet leak</p>
-          <p class="pullquote" style="margin-top:20px">This is how small businesses <span>quietly bleed money.</span></p>
-        </div>
-        <div>
-          <div class="prose reveal" style="--rd:80ms">
-            <p>You are not short of customers. You already earned them. They booked, they paid, they said they&rsquo;d be back &mdash; and then life moved on and so did they. Nobody quit. They just drifted.</p>
-            <p>Meanwhile the marketing advice points the other way: more ads, more posts, more reach. Chasing strangers is the most expensive thing you can do, and it skips right past the people who already trust you.</p>
-            <p>Writing to them one by one is the obvious fix. It is also the thing that never happens, because it is two hundred emails and you are running a business at the same time.</p>
-          </div>
-
-          <div class="ledger reveal" style="--rd:140ms">
-            <div class="ledger-row"><b>1&times;</b><p>A customer who came once is worth more to reach than a stranger who never has.</p></div>
-            <div class="ledger-row"><b>0</b><p>Ad spend. These are people already in your books.</p></div>
-            <div class="ledger-row"><b>You</b><p>stay the person writing to them. It is your voice, your accounts, your call.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- ══ THE CONSOLE — the product writing, live ══ -->
-  <section id="live">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Watch it write</p>
-        <h2 style="margin-top:18px">This is what one draft looks like.</h2>
-        <p class="lede">
-          Below, the system is writing to a customer who has not booked in seven months. It stops
-          when it is done and waits. Nothing moves until you press approve — which is the part you
-          should try yourself.
-        </p>
-      </div>
-
-      <div class="console lit" id="console">
-        <div class="console-bar">
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="console-title">Sample — written by the system</span>
-          <span class="console-note">Lumen Aesthetics · invented test data</span>
-          <span class="nav-sp"></span>
-          <button class="replay" id="replayBtn" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.7-6.4"/><path d="M3 4v5h5"/></svg>
-            Replay
-          </button>
-        </div>
-
-        <div class="console-body">
-          <div class="compose">
-            <dl class="mailhead">
-              <dt>To</dt><dd><b>Marisol Vega</b> — last visit 7 months ago (hydrafacial)</dd>
-              <dt>From</dt><dd>Lumen Aesthetics &lt;hello@lumen-aesthetics.test&gt;</dd>
-              <dt>Subject</dt><dd>Been a while, Marisol</dd>
-            </dl>
-            <div class="letter" id="letter" aria-live="polite" aria-atomic="false">
-              <p>Hi Marisol,</p>
-              <p>It has been about seven months since your last hydrafacial with us, and I found myself wondering how your skin has been getting on since.</p>
-              <p>No pitch here. If you are due for another one, I have kept a couple of quieter morning slots open next week and you are welcome to either of them.</p>
-              <p>And if the timing is wrong, just say so — I will leave you be.</p>
-              <p>Warmly,<br>Elena at Lumen<span class="caret" aria-hidden="true"></span></p>
-            </div>
-          </div>
-
-          <div class="sidecar">
-            <div class="statebox">
-              <div class="statelabel">Status</div>
-              <div class="statechip" id="stateChip"><span class="bead" aria-hidden="true"></span><span id="stateText">Draft</span></div>
-
-              <ul class="steps" id="steps">
-                <li data-step="0"><span class="tickbox" aria-hidden="true"></span>Drafted by the system</li>
-                <li data-step="1"><span class="tickbox" aria-hidden="true"></span>Waiting for your approval</li>
-                <li data-step="2"><span class="tickbox" aria-hidden="true"></span>Approved — queued to send</li>
-              </ul>
-
-              <button class="approve" id="approveBtn" type="button" aria-label="Approve this drafted message and send it">
-                <span id="approveLabel">Approve &amp; send</span>
-              </button>
-              <p class="approve-hint" id="approveHint">Try it — this is the only way a message ever goes out.</p>
-            </div>
-
-            <div class="bars">
-              <div class="bar-row">
-                <div class="bar-top"><span>Drafted</span><b><span class="num" data-to="244">244</span> of 244</b></div>
-                <div class="track armed" style="--fill:1"><i></i></div>
-              </div>
-              <div class="bar-row">
-                <div class="bar-top"><span>Approved by you</span><b><span class="num" data-to="242">242</span></b></div>
-                <div class="track armed" style="--fill:.992"><i></i></div>
-              </div>
-              <div class="bar-row">
-                <div class="bar-top"><span>Replied</span><b><span class="num" data-to="18">18</span></b></div>
-                <div class="track armed" style="--fill:.074"><i></i></div>
-              </div>
-              <div class="bar-row">
-                <div class="bar-top"><span>Ready to book</span><b><span class="num" data-to="1">1</span></b></div>
-                <div class="track armed" style="--fill:.02"><i></i></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- ══ DEMO ══ -->
-  <section id="demo">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">See it run</p>
-        <h2 style="margin-top:18px">Quick 3 minute video walkthrough.</h2>
-      </div>
-      <div class="frame reveal lit">
-        <div class="frame-in" id="demoFrame">
-          <div class="cover-stack">
-            <div class="cover" aria-hidden="true">
-            <span class="cover-mark">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3.5 17.5h17"/>
-                <path d="M8.75 5.4a6.5 6.5 0 1 0 6.5 0"/>
-                <path d="M12 2.8v7"/>
-                <path d="M4.6 8.4l1.5 1.5M19.4 8.4l-1.5 1.5"/>
-              </svg>
-            </span>
-              <p class="cover-name">Reactivation <em>Studio</em></p>
-            </div>
-          <button class="play" type="button" id="demoPlay"
-                    aria-label="Play the three minute Reactivation Studio walkthrough">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
-            </button>
-          </div>
-          <div class="frame-meta">
-            <span>Reactivation Studio &mdash; walkthrough</span>
-            <span>3:10</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- ══ HOW IT WORKS — a ledger, not steps ══ -->
-  <section id="how">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">How it works</p>
-        <h2 style="margin-top:18px">Who does what, and when.</h2>
-        <p class="lede">I do the setup. The system drafts personalized emails. You do the approving. Here is the honest split.</p>
-      </div>
-
-      <div class="ledger reveal">
-        <div class="row">
-          <div class="when">First</div>
-          <div>
-            <h3>You send me your customer list</h3>
-            <p class="small">Whatever your booking software exports — a spreadsheet is fine. I clean it, work out who has gone quiet, and set the system up inside your own email account.</p>
-          </div>
-          <div class="who"><b>Mine</b>All of it. You send one file.</div>
-        </div>
-        <div class="row">
-          <div class="when">Then</div>
-          <div>
-            <h3>It writes to each person like you would</h3>
-            <p class="small">Not a blast. One message per person, referencing what they came in for and how long it has been. Written to sound like you, because I tune it on the way you already talk to clients.</p>
-          </div>
-          <div class="who"><b>The system</b>Drafts only. It cannot send.</div>
-        </div>
-        <div class="row">
-          <div class="when">Before anything sends</div>
-          <div>
-            <h3>You read every message and approve it</h3>
-            <p class="small">The drafts sit in a queue. You skim them, edit anything that sounds off, and approve. Nothing reaches a customer that you have not personally seen.</p>
-          </div>
-          <div class="who"><b>Yours</b>Ten minutes. Every message.</div>
-        </div>
-        <div class="row">
-          <div class="when">After it sends</div>
-          <div>
-            <h3>Replies come back and get sorted</h3>
-            <p class="small">Interested, not now, or please stop. Anyone who sounds ready to book gets flagged for you. Anyone who asks to be left alone is removed and never contacted again.</p>
-          </div>
-          <div class="who"><b>The system</b>You get the ready ones.</div>
-        </div>
-        <div class="row">
-          <div class="when">Throughout</div>
-          <div>
-            <h3>I am on the other end of it</h3>
-            <p class="small">If something reads wrong, you tell me and I fix it that day. This is a service with a person behind it, not software you get handed a login to.</p>
-          </div>
-          <div class="who"><b>Mine</b>Direct line to me.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- ══ LIMITS ══ -->
-  
-
-  <hr class="rule">
-
-
-  <!-- ══ CTA ══ -->
-  <section class="cta" id="pilot">
-    <div class="wrap">
-      <div class="cta-card reveal lit">
-
-        <p class="offer-kicker">
-          <span class="badge-live" aria-hidden="true"></span>
-          Pilot Program <span class="bar">|</span> <em>Exclusive Offer</em>
-        </p>
-
-        <h2 class="offer-h2">Thirty days free.</h2>
-
-        <p class="lede offer-lede">
-          Open to the first few businesses only &mdash; after that the free trial closes.
-          I am doing it this way because at this stage your honest feedback, and a testimonial
-          if it genuinely works, are worth more to me than the fee.
-        </p>
-
-        <div class="price-table">
-          <div class="price-row">
-            <span class="price-label">Campaign setup</span>
-            <span class="price-was"><s>$2,000</s></span>
-            <span class="price-now"><span class="tickg" aria-hidden="true">✓</span> $0</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Monthly maintenance</span>
-            <span class="price-was"><s>$500<i>/mo</i></s></span>
-            <span class="price-now"><span class="tickg" aria-hidden="true">✓</span> $0</span>
-          </div>
-          <div class="price-row price-total">
-            <span class="price-label">Your first month</span>
-            <span class="price-was"><s>$2,500</s></span>
-            <span class="price-now price-free">$0</span>
-          </div>
-        </div>
-
-        <div class="hero-cta offer-cta">
-          <a class="btn btn-primary" href="../../apply/">Apply for Offer <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="#demo">Watch the demo first</a>
-        </div>
-
-        <div class="terms">
-          <span><span class="tick" aria-hidden="true">✓</span> No sales call &mdash; we do it over email</span>
-          <span><span class="tick" aria-hidden="true">✓</span> No contract, no lock-in</span>
-          <span><span class="tick" aria-hidden="true">✓</span> Nothing sends without your approval</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
-
 <footer>
   <div class="wrap foot">
 
@@ -3394,7 +3260,6 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 
   </div>
 </footer>
-
 <script>
 (function(){
   'use strict';
@@ -3503,608 +3368,8 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
     setTimeout(showAll, 5000);
   }
 
-  /* ── LIFECYCLE BARS — fill on entry (visible full at rest) ─ */
-  var tracks = [].slice.call(document.querySelectorAll('.track'));
-  if(!REDUCE && hasIO){
-    var vh2 = window.innerHeight || 800;
-    tracks.forEach(function(t){
-      if(t.getBoundingClientRect().top > vh2 * 0.92) t.classList.add('armed');
-      else t.classList.add('in');
-    });
-    var tio = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); tio.unobserve(e.target); }
-      });
-    }, { threshold: .3 });
-    tracks.forEach(function(t){ tio.observe(t); });
-  } else {
-    tracks.forEach(function(t){ t.classList.add('in'); });
-  }
-
-  /* ── COUNT-UP — final value is in the DOM at rest ────────── */
-  var nums = [].slice.call(document.querySelectorAll('.num'));
-  if(!REDUCE && hasIO){
-    var nio = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        nio.unobserve(e.target);
-        countUp(e.target);
-      });
-    }, { threshold: .6 });
-    nums.forEach(function(n){ nio.observe(n); });
-  }
-
-  function countUp(el){
-    var to = parseFloat(el.getAttribute('data-to'));
-    if(isNaN(to)) return;
-    if(to === 0){ return; }
-    var dur = 1100 + Math.min(to, 400) * 1.1;
-    var t0 = 0;
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / dur);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = String(Math.round(to * e));
-      if(p < 1) requestAnimationFrame(step);
-      else el.textContent = String(to);
-    }
-    el.textContent = '0';
-    requestAnimationFrame(step);
-  }
-
-  /* ── SCROLL PROGRESS + PARALLAX + SLAB FALLBACK ──────────── */
-  var progBar = document.getElementById('progBar');
-  var fieldLayer = document.getElementById('fieldLayer');
-  var slab = document.getElementById('slab');
-  var ledgerRows = [].slice.call(document.querySelectorAll('.row'));
-  var scrollQueued = false;
-
-  function onScroll(){
-    if(scrollQueued) return;
-    scrollQueued = true;
-    requestAnimationFrame(function(){
-      scrollQueued = false;
-      var doc = document.documentElement;
-      var max = (doc.scrollHeight - window.innerHeight) || 1;
-      var y = window.pageYOffset || doc.scrollTop || 0;
-      var p = Math.max(0, Math.min(1, y / max));
-      if(progBar) progBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-
-      if(REDUCE) return;
-
-      // parallax: the mesh field drifts slower than the page
-      if(fieldLayer) fieldLayer.style.transform = 'translate3d(0,' + (y * 0.085).toFixed(2) + 'px,0)';
-
-      // screenshot lift fallback where view() timelines are unsupported
-      if(slab && !supportsViewTimeline){
-        var r = slab.getBoundingClientRect();
-        var vhx = window.innerHeight || 800;
-        var t = 1 - Math.max(0, Math.min(1, (r.top + r.height * .35) / (vhx + r.height * .35)));
-        // t: 0 entering bottom -> 1 exiting top
-        var rx = (0.5 - t) * 12;          // +6deg to -6deg
-        var sc = 0.965 + Math.min(t, .45) * 0.078;
-        var ty = (0.42 - t) * 34;
-        slab.style.setProperty('--sx', rx.toFixed(2) + 'deg');
-        slab.style.setProperty('--ss', Math.min(sc, 1).toFixed(3));
-        slab.style.setProperty('--sy', ty.toFixed(1) + 'px');
-      }
-
-      // the ledger ember: light each row's hairline as it crosses
-      var mid = (window.innerHeight || 800) * 0.72;
-      for(var i=0;i<ledgerRows.length;i++){
-        var rr = ledgerRows[i].getBoundingClientRect();
-        if(rr.top < mid) ledgerRows[i].classList.add('lit-row');
-      }
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  window.addEventListener('resize', onScroll, { passive:true });
-  onScroll();
-
-  /* ── POINTER: hearth glow, panel light ───────────────────── */
-  var hearth = document.getElementById('hearth');
-  var ptrQueued = false, px = 0, py = 0;
-
-  if(finePointer && !REDUCE){
-    window.addEventListener('pointermove', function(ev){
-      px = ev.clientX; py = ev.clientY;
-      if(ptrQueued) return;
-      ptrQueued = true;
-      requestAnimationFrame(applyPointer);
-    }, { passive:true });
-  }
-
-  var litPanels = [].slice.call(document.querySelectorAll('.lit'));
-
-  function applyPointer(){
-    ptrQueued = false;
-    if(hearth){
-      hearth.style.setProperty('--px', px + 'px');
-      hearth.style.setProperty('--py', py + 'px');
-    }
-
-    var i, r;
-    for(i=0;i<litPanels.length;i++){
-      r = litPanels[i].getBoundingClientRect();
-      if(r.bottom < -200 || r.top > (window.innerHeight + 200)) continue;
-      litPanels[i].style.setProperty('--mx', (px - r.left) + 'px');
-      litPanels[i].style.setProperty('--my', (py - r.top) + 'px');
-    }
-
-  }
-
-  /* ── THE CONSOLE: types itself, then waits for a human ───── */
-  var letter = document.getElementById('letter');
-  var stateChip = document.getElementById('stateChip');
-  var stateText = document.getElementById('stateText');
-  var approveBtn = document.getElementById('approveBtn');
-  var approveLabel = document.getElementById('approveLabel');
-  var approveHint = document.getElementById('approveHint');
-  var replayBtn = document.getElementById('replayBtn');
-  var stepEls = [].slice.call(document.querySelectorAll('#steps li'));
-
-  var words = [];       // wrapped word spans
-  var typeTimer = null;
-  var typedIdx = 0;
-
-  function wrapWords(){
-    if(!letter || words.length) return;
-    var paras = [].slice.call(letter.querySelectorAll('p'));
-    paras.forEach(function(p){
-      var kids = [].slice.call(p.childNodes);
-      kids.forEach(function(node){
-        if(node.nodeType !== 3) return;          // keep <br> and the caret intact
-        var frag = document.createDocumentFragment();
-        var parts = node.nodeValue.split(/(\s+)/);
-        parts.forEach(function(part){
-          if(part === '') return;
-          if(/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
-          var s = document.createElement('span');
-          s.className = 'w';
-          s.textContent = part;
-          frag.appendChild(s);
-          words.push(s);
-        });
-        p.replaceChild(frag, node);
-      });
-    });
-  }
-
-  function setState(name){
-    if(!stateChip) return;
-    stateChip.classList.remove('is-waiting','is-approved');
-    if(name === 'draft'){
-      stateText.textContent = 'Draft';
-      markSteps(-1);
-    } else if(name === 'waiting'){
-      stateText.textContent = 'Waiting for your approval';
-      stateChip.classList.add('is-waiting');
-      markSteps(0, 1);
-    } else if(name === 'approved'){
-      stateText.textContent = 'Approved';
-      stateChip.classList.add('is-approved');
-      markSteps(2);
-    }
-  }
-
-  function markSteps(doneUpTo, liveIdx){
-    stepEls.forEach(function(li, i){
-      li.classList.toggle('done', i <= doneUpTo);
-      li.classList.toggle('live', i === liveIdx);
-    });
-  }
-
-  function resetApprove(){
-    if(!approveBtn) return;
-    approveBtn.disabled = true;
-    approveBtn.classList.remove('is-done');
-    approveLabel.textContent = 'Approve & send';
-    approveBtn.setAttribute('aria-label','Approve this drafted message and send it');
-    if(approveHint) approveHint.textContent = 'The system is still writing…';
-  }
-
-  function armApprove(){
-    if(!approveBtn) return;
-    approveBtn.disabled = false;
-    if(approveHint) approveHint.textContent = 'Try it — this is the only way a message ever goes out.';
-  }
-
-  function finishTyping(){
-    if(typeTimer){ clearTimeout(typeTimer); typeTimer = null; }
-    words.forEach(function(w){ w.classList.add('on'); });
-    typedIdx = words.length;
-    if(letter) letter.classList.remove('typing');
-    setState('waiting');
-    armApprove();
-  }
-
-  function typeNext(){
-    if(typedIdx >= words.length){ finishTyping(); return; }
-    var w = words[typedIdx];
-    w.classList.add('on');
-    typedIdx++;
-    // a touch slower after punctuation — the system "thinking"
-    var txt = w.textContent;
-    var base = 70 + Math.random() * 20;
-    if(/[.,—!?]$/.test(txt)) base += 190;
-    typeTimer = setTimeout(typeNext, base);
-  }
-
-  function runSequence(){
-    if(!letter) return;
-    wrapWords();
-    if(REDUCE){
-      words.forEach(function(w){ w.classList.add('on'); });
-      letter.classList.remove('typing');
-      setState('waiting');
-      armApprove();
-      return;
-    }
-    if(typeTimer){ clearTimeout(typeTimer); typeTimer = null; }
-    typedIdx = 0;
-    words.forEach(function(w){ w.classList.remove('on'); });
-    letter.classList.add('typing');
-    setState('draft');
-    markSteps(-1, 0);
-    resetApprove();
-    typeTimer = setTimeout(typeNext, 520);
-  }
-
-  var sequenceStarted = false;
-  function startOnce(){
-    if(sequenceStarted) return;
-    sequenceStarted = true;
-    runSequence();
-  }
-
-  if(letter){
-    wrapWords();
-    if(REDUCE || !hasIO){
-      // at rest, fully written and awaiting approval
-      words.forEach(function(w){ w.classList.add('on'); });
-      setState('waiting');
-      armApprove();
-      sequenceStarted = true;
-    } else {
-      // visible and complete until the observer decides to replay it
-      words.forEach(function(w){ w.classList.add('on'); });
-      setState('waiting');
-      armApprove();
-      var cio = new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if(e.isIntersecting && e.intersectionRatio > .35){
-            cio.disconnect();
-            startOnce();
-          }
-        });
-      }, { threshold: [.35] });
-      cio.observe(letter.closest('.console') || letter);
-      setTimeout(function(){
-        if(!sequenceStarted){ sequenceStarted = true; finishTyping(); }
-      }, 12000);
-    }
-  }
-
-  if(approveBtn){
-    approveBtn.addEventListener('click', function(){
-      if(approveBtn.disabled) return;
-      setState('approved');
-      approveBtn.classList.add('is-done');
-      approveBtn.disabled = true;
-      approveLabel.textContent = 'Approved — queued for 9:10am';
-      approveBtn.setAttribute('aria-label','Approved. This message is queued to send at 9:10am.');
-      if(approveHint) approveHint.textContent = 'That press is the whole promise. Nothing moves without it.';
-    });
-  }
-
-  if(replayBtn){
-    replayBtn.addEventListener('click', function(){
-      sequenceStarted = true;
-      runSequence();
-    });
-  }
-
-  /* ── AMBIENT CANVAS — embers rising in a dark room ───────── */
-  var cv = document.getElementById('embers');
-  var ctx = cv && cv.getContext ? cv.getContext('2d') : null;
-  var motes = [], W = 0, H = 0, DPR = 1, rafId = 0, running = false;
-  var warm = [255,150,90];
-
-  function emberTheme(){
-    var dark = d.getAttribute('data-theme') === 'dark' ||
-      (!d.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    warm = dark ? [255,150,88] : [186,86,40];
-    if(REDUCE) drawStatic();
-  }
-
-  function sizeCanvas(){
-    if(!cv) return;
-    DPR = Math.min(2, window.devicePixelRatio || 1);
-    W = window.innerWidth; H = window.innerHeight;
-    cv.width = Math.round(W * DPR);
-    cv.height = Math.round(H * DPR);
-    cv.style.width = W + 'px';
-    cv.style.height = H + 'px';
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-  }
-
-  function makeMote(seedTop){
-    return {
-      x: Math.random() * W,
-      y: seedTop ? Math.random() * H : H + Math.random() * 90,
-      r: 0.55 + Math.random() * 2.0,
-      vy: -(0.09 + Math.random() * 0.30),
-      drift: (Math.random() - .5) * 0.22,
-      phase: Math.random() * Math.PI * 2,
-      wob: 0.0035 + Math.random() * 0.009,
-      life: 0,
-      max: 900 + Math.random() * 1600,
-      a: 0.16 + Math.random() * 0.42
-    };
-  }
-
-  function seed(){
-    var count = Math.round(Math.min(74, Math.max(26, (W * H) / 26000)));
-    motes = [];
-    for(var i=0;i<count;i++) motes.push(makeMote(true));
-  }
-
-  function drawMote(m, glowScale){
-    var a = m.a * glowScale;
-    if(a <= 0.002) return;
-    var g = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r * 6);
-    g.addColorStop(0,   'rgba(' + warm[0] + ',' + warm[1] + ',' + warm[2] + ',' + a.toFixed(3) + ')');
-    g.addColorStop(0.35,'rgba(' + warm[0] + ',' + Math.round(warm[1]*.7) + ',' + Math.round(warm[2]*.5) + ',' + (a*0.34).toFixed(3) + ')');
-    g.addColorStop(1,   'rgba(' + warm[0] + ',' + warm[1] + ',' + warm[2] + ',0)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(m.x, m.y, m.r * 6, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = 'rgba(' + warm[0] + ',' + Math.min(255, warm[1]+40) + ',' + Math.min(255, warm[2]+50) + ',' + Math.min(1, a*1.5).toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.arc(m.x, m.y, m.r * 0.62, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  function drawStatic(){
-    if(!ctx) return;
-    if(!W) sizeCanvas();
-    if(!motes.length) seed();
-    ctx.clearRect(0,0,W,H);
-    for(var i=0;i<motes.length;i++) drawMote(motes[i], 1);
-  }
-
-  var burstAt = 0;
-  function emberBurst(){
-    if(REDUCE || !ctx) return;
-    burstAt = performance.now();
-    // a handful of fresh embers lift off where the console sits
-    var host = document.getElementById('console');
-    if(!host) return;
-    var r = host.getBoundingClientRect();
-    var baseX = r.left + r.width * 0.78;
-    var baseY = Math.max(60, Math.min(H - 20, r.top + r.height * 0.62));
-    for(var i=0;i<16;i++){
-      var m = makeMote(false);
-      m.x = baseX + (Math.random()-.5) * 120;
-      m.y = baseY + (Math.random()-.5) * 50;
-      m.vy = -(0.35 + Math.random() * 0.75);
-      m.r = 0.8 + Math.random() * 2.2;
-      m.a = 0.5 + Math.random() * 0.4;
-      motes.push(m);
-    }
-    if(motes.length > 150) motes.splice(0, motes.length - 150);
-  }
-
-  var last = 0;
-  function frame(ts){
-    rafId = 0;
-    if(!running) return;
-    var dt = Math.min(48, ts - (last || ts)); last = ts;
-    ctx.clearRect(0,0,W,H);
-    var pulse = 1 + Math.sin(ts * 0.00035) * 0.10;
-    for(var i=motes.length-1;i>=0;i--){
-      var m = motes[i];
-      m.life += dt;
-      m.phase += m.wob * dt;
-      m.y += m.vy * (dt / 16.67);
-      m.x += (m.drift + Math.sin(m.phase) * 0.34) * (dt / 16.67);
-      if(m.x < -40) m.x = W + 30;
-      if(m.x > W + 40) m.x = -30;
-      var fadeIn  = Math.min(1, m.life / 900);
-      var fadeOut = Math.max(0, 1 - Math.max(0, m.life - m.max) / 1400);
-      if(m.y < -50 || fadeOut <= 0){
-        motes[i] = makeMote(false);
-        continue;
-      }
-      drawMote(m, fadeIn * fadeOut * pulse);
-    }
-    rafId = requestAnimationFrame(frame);
-  }
-
-  function startLoop(){
-    if(REDUCE || running || !ctx) return;
-    running = true; last = 0;
-    rafId = requestAnimationFrame(frame);
-  }
-  function stopLoop(){
-    running = false;
-    if(rafId){ cancelAnimationFrame(rafId); rafId = 0; }
-  }
-
-  if(ctx){
-    sizeCanvas();
-    seed();
-    emberTheme();
-    if(REDUCE){
-      drawStatic();
-    } else {
-      startLoop();
-      document.addEventListener('visibilitychange', function(){
-        if(document.visibilityState === 'hidden') stopLoop();
-        else startLoop();
-      });
-      // pause when the canvas is effectively off-view (page scrolled far — it is
-      // fixed, so it only truly idles when the tab is hidden; keep the guard cheap)
-      if(hasIO){
-        var vio = new IntersectionObserver(function(es){
-          es.forEach(function(e){
-            if(e.isIntersecting && document.visibilityState === 'visible') startLoop();
-            else stopLoop();
-          });
-        }, { threshold: 0 });
-        vio.observe(cv);
-      }
-    }
-    var rzt = null;
-    window.addEventListener('resize', function(){
-      clearTimeout(rzt);
-      rzt = setTimeout(function(){ sizeCanvas(); seed(); if(REDUCE) drawStatic(); }, 180);
-    }, { passive:true });
-  }
-
-  /* ── react live if the user flips reduced-motion mid-session ─ */
-  try{
-    mqReduce.addEventListener('change', function(e){
-      if(e.matches){
-        REDUCE = true;
-        stopLoop();
-        drawStatic();
-        finishTyping();
-        showAll();
-        d.classList.remove('pointer-fine');
-      }
-    });
-  }catch(e){}
-})();
-</script>
-
-<script>
-/* SAFETY NET: nothing may stay invisible. If any revealed element is still hidden
-   shortly after load (mis-measured fold, IO never firing, font/image reflow), force it visible. */
-(function(){
-  function unhide(){
-    var els = document.querySelectorAll('.reveal, .reveal.armed, [class*="armed"]');
-    for (var i=0;i<els.length;i++){
-      var el = els[i];
-      var cs = window.getComputedStyle(el);
-      if (parseFloat(cs.opacity) < 0.9){
-        el.classList.add('in');
-        el.classList.remove('armed');
-        el.style.opacity = '1';
-        el.style.filter = 'none';
-        el.style.transform = 'none';
-      }
-    }
-  }
-  window.addEventListener('load', function(){ setTimeout(unhide, 1200); setTimeout(unhide, 3000); });
-  setTimeout(unhide, 4000);
 })();
 </script>
 
 
-<script>
-/* nav glass appears only once the page has scrolled */
-(function(){
-  var hdr=document.getElementById('hdr');
-  if(!hdr) return;
-  var ticking=false;
-  function apply(){ hdr.classList.toggle('stuck', window.scrollY > 24); ticking=false; }
-  addEventListener('scroll', function(){
-    if(!ticking){ ticking=true; requestAnimationFrame(apply); }
-  }, {passive:true});
-  apply();
-})();
-</script>
-
-<script>
-/* showcase carousel — scroll-snap does the swiping; JS only syncs the dots */
-(function(){
-  var track=document.getElementById('carTrack');
-  if(!track) return;
-  var slides=[].slice.call(track.querySelectorAll('.car-slide'));
-  var dots=document.getElementById('carDots');
-  var prev=document.getElementById('carPrev'), next=document.getElementById('carNext');
-  var cur=0;
-
-  slides.forEach(function(_,i){
-    var b=document.createElement('button');
-    b.className='car-dot'; b.type='button'; b.setAttribute('role','tab');
-    b.setAttribute('aria-label','Screen '+(i+1));
-    b.setAttribute('aria-selected', i===0 ? 'true' : 'false');
-    b.onclick=function(){ go(i); };
-    dots.appendChild(b);
-  });
-  var dotEls=[].slice.call(dots.children);
-
-  function go(i){
-    i=Math.max(0,Math.min(slides.length-1,i));
-    var s=slides[i];
-    track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.clientWidth)/2, behavior:'smooth' });
-  }
-  function sync(){
-    var mid=track.scrollLeft+track.clientWidth/2, best=0, bd=Infinity;
-    slides.forEach(function(s,i){
-      var c=s.offsetLeft+s.clientWidth/2, d=Math.abs(c-mid);
-      if(d<bd){ bd=d; best=i; }
-    });
-    if(best!==cur){
-      cur=best;
-      dotEls.forEach(function(d,i){ d.setAttribute('aria-selected', i===cur ? 'true':'false'); });
-    }
-    prev.disabled = cur===0;
-    next.disabled = cur===slides.length-1;
-  }
-  var t=false;
-  track.addEventListener('scroll',function(){
-    if(!t){ t=true; requestAnimationFrame(function(){ sync(); t=false; }); }
-  },{passive:true});
-  prev.onclick=function(){ go(cur-1); };
-  next.onclick=function(){ go(cur+1); };
-  track.addEventListener('keydown',function(e){
-    if(e.key==='ArrowLeft') go(cur-1);
-    if(e.key==='ArrowRight') go(cur+1);
-  });
-  sync();
-})();
-</script>
-
-<script>
-/* Click-to-play: nothing from YouTube loads until the visitor presses play,
-   then the player takes over the frame in place. */
-(function(){
-  var VIDEO='U7jT2QbM_UM';
-  var btn=document.getElementById('demoPlay'), box=document.getElementById('demoFrame');
-  if(!btn||!box) return;
-
-  btn.addEventListener('click', function(){
-    var f=document.createElement('iframe');
-    f.src='https://www.youtube-nocookie.com/embed/'+VIDEO+
-          '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-    f.title='Reactivation Studio — walkthrough';
-    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
-    f.allowFullscreen=true;
-    box.appendChild(f);
-    box.classList.add('is-playing');
-
-    /* file:// sends no Referer, so YouTube refuses the embed (Error 153).
-       Nothing can be done about that in code — say so plainly instead. */
-    if(location.protocol==='file:'){
-      var n=document.createElement('p');
-      n.className='demo-note';
-      n.innerHTML='This page is open from a file, so YouTube blocks the embed. '+
-                  'Run <code>./serve.sh</code> in this folder and open '+
-                  '<b>localhost</b> — the video plays here then.';
-      box.parentNode.appendChild(n);
-    }
-  });
-})();
-</script>
-
-<script>
-(function(){var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();})();
-</script>
-
-<!-- Theme lab: local only. This file is gitignored and 404s in production. -->
-<script src="../../theme-lab.js"></script>
 </body></html>
