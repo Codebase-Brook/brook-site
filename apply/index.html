@@ -3094,6 +3094,10 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 /* ── native application form ─────────────────────────────── */
 .af{ padding:clamp(20px,3vw,30px) clamp(18px,2.6vw,28px) clamp(22px,3vw,30px); }
 .af-bot{ display:none !important; }
+.af-legend{
+  margin:0 0 clamp(16px,2.2vw,22px);
+  font-size:12.5px; color:var(--t-faint);
+}
 
 .af-row{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,2vw,20px); }
 @media(max-width:620px){ .af-row{ grid-template-columns:1fr; } }
@@ -3108,12 +3112,24 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
   display:block; margin-bottom:7px;
   font-size:13.5px; font-weight:600; letter-spacing:-.004em; color:var(--t-strong);
 }
-.af-label em{ font-style:normal; font-weight:400; color:var(--t-faint); }
+.af-req{ color:var(--ember); font-weight:600; margin-left:1px; }
+.af-opt{
+  font-style:normal; font-weight:500; font-size:11px;
+  letter-spacing:.05em; text-transform:uppercase;
+  color:var(--t-faint); margin-left:5px;
+  padding:2px 6px; border:1px solid var(--line-soft); border-radius:5px;
+}
+/* the optional field is separated from the required block above it */
+.af-optional-group{
+  margin-top:clamp(18px,2.4vw,26px); padding-top:clamp(18px,2.4vw,26px);
+  border-top:1px solid var(--line-soft);
+}
 .af-help{ display:block; margin:-2px 0 10px; font-size:12.5px; line-height:1.5; color:var(--t-faint); }
 
 .af input[type=text], .af input[type=email], .af select, .af textarea{
   width:100%; box-sizing:border-box;
-  font:inherit; font-size:15px; color:var(--t-strong);
+  font-family:"Outfit", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size:15px; font-weight:400; color:var(--t-strong);
   background:var(--field);
   border:1px solid var(--line); border-radius:10px;
   padding:11px 13px;
@@ -3142,6 +3158,7 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 .af-choice input{ position:absolute; opacity:0; width:0; height:0; }
 .af-choice span{
   display:block; cursor:pointer;
+  font-family:"Outfit", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size:13.5px; letter-spacing:-.004em; color:var(--t-muted);
   background:var(--field); border:1px solid var(--line);
   border-radius:9px; padding:9px 14px;
@@ -3160,7 +3177,8 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 
 .af-submit{
   margin-top:4px; width:100%; justify-content:center;
-  border:0; cursor:pointer; font-family:inherit;
+  border:0; cursor:pointer;
+  font-family:"Outfit", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 .af-submit[disabled]{ opacity:.6; cursor:default; }
 
@@ -3216,37 +3234,39 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
     </div>
 
     <div class="apply-card reveal" style="--rd:140ms">
-      <form class="af" id="applyForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <form class="af" id="applyForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="ffa4eddb-d297-4b49-84cf-74c66aca80d1">
         <input type="hidden" name="subject" value="Pilot application — buildwithbrook.com">
         <input type="hidden" name="from_name" value="buildwithbrook.com">
         <input type="hidden" name="redirect" value="https://buildwithbrook.com/apply/thanks/">
         <input type="checkbox" name="botcheck" class="af-bot" tabindex="-1" autocomplete="off">
 
+        <p class="af-legend"><b class="af-req" aria-hidden="true">*</b> Required. Everything else is optional.</p>
+
         <div class="af-row">
           <label class="af-field">
-            <span class="af-label">Your name</span>
+            <span class="af-label">Your name <b class="af-req" aria-hidden="true">*</b></span>
             <input type="text" name="name" required autocomplete="name" placeholder="First and last name">
           </label>
           <label class="af-field">
-            <span class="af-label">Business name</span>
+            <span class="af-label">Business name <b class="af-req" aria-hidden="true">*</b></span>
             <input type="text" name="business" required autocomplete="organization" placeholder="What customers know you as">
           </label>
         </div>
 
         <div class="af-row">
           <label class="af-field">
-            <span class="af-label">Your email</span>
+            <span class="af-label">Your email <b class="af-req" aria-hidden="true">*</b></span>
             <input type="email" name="email" required autocomplete="email" placeholder="you@yourbusiness.com">
           </label>
           <label class="af-field">
-            <span class="af-label">What kind of business</span>
+            <span class="af-label">What kind of business <b class="af-req" aria-hidden="true">*</b></span>
             <input type="text" name="business_type" required placeholder="med spa, salon, dental practice…">
           </label>
         </div>
 
         <fieldset class="af-field af-fs">
-          <legend class="af-label">Roughly how many past customers do you have contact details for?</legend>
+          <legend class="af-label">Roughly how many past customers do you have contact details for? <b class="af-req" aria-hidden="true">*</b></legend>
           <span class="af-help">A rough count is fine. This is the biggest factor in whether reactivation will work for you.</span>
           <div class="af-choices">
             <label class="af-choice"><input type="radio" name="list_size" value="Under 150" required><span>Under 150</span></label>
@@ -3258,7 +3278,13 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
         </fieldset>
 
         <label class="af-field">
-          <span class="af-label">Where does that customer list live?</span>
+          <span class="af-label">Your website <em class="af-opt">Optional</em></span>
+          <input type="text" name="website" inputmode="url" autocomplete="url"
+                 placeholder="yourbusiness.com">
+        </label>
+
+        <label class="af-field">
+          <span class="af-label">Where does that customer list live? <b class="af-req" aria-hidden="true">*</b></span>
           <select name="list_location" required>
             <option value="" disabled selected>Choose one…</option>
             <option>Square</option>
@@ -3273,10 +3299,12 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
           </select>
         </label>
 
-        <label class="af-field">
-          <span class="af-label">Anything you want me to know? <em>Optional</em></span>
-          <textarea name="notes" rows="4" placeholder="What you have tried before, what you are hoping for — anything at all"></textarea>
-        </label>
+        <div class="af-optional-group">
+          <label class="af-field">
+            <span class="af-label">Anything you want me to know? <em class="af-opt">Optional</em></span>
+            <textarea name="notes" rows="4" placeholder="What you have tried before, what you are hoping for — anything at all"></textarea>
+          </label>
+        </div>
 
         <button class="ghost af-submit" type="submit" id="applySubmit">Send application &rarr;</button>
         <p class="af-status" id="applyStatus" role="status" aria-live="polite"></p>
@@ -3442,9 +3470,15 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
   var btn=document.getElementById('applySubmit'), st=document.getElementById('applyStatus');
   var KEY=f.elements['access_key'].value;
   f.addEventListener('submit', function(e){
-    if(!f.checkValidity()){ return; }           // let the browser show its own messages
-    if(KEY.indexOf('WEB3FORMS') === 0){ return; } // key not set yet — fall back to a normal POST
+    // ALWAYS stop the native POST: with it in play an invalid or empty
+    // form still reached the endpoint and recorded a blank submission.
     e.preventDefault();
+    if(!f.reportValidity()){ return; }   // shows the browser's own messages, then stops
+    // a bare "acme.com" is what people type; store it as a usable link
+    var w=f.elements['website'];
+    if(w && w.value.trim() && !/^https?:\/\//i.test(w.value.trim())){
+      w.value='https://'+w.value.trim().replace(/^\/+/,'');
+    }
     st.className='af-status'; st.textContent='Sending…';
     btn.disabled=true; btn.textContent='Sending…';
     var data=Object.fromEntries(new FormData(f).entries());
