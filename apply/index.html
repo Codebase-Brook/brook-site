@@ -3234,12 +3234,10 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
     </div>
 
     <div class="apply-card reveal" style="--rd:140ms">
-      <form class="af" id="applyForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="ffa4eddb-d297-4b49-84cf-74c66aca80d1">
-        <input type="hidden" name="subject" value="Pilot application — buildwithbrook.com">
-        <input type="hidden" name="from_name" value="buildwithbrook.com">
-        <input type="hidden" name="redirect" value="https://buildwithbrook.com/apply/thanks/">
-        <input type="checkbox" name="botcheck" class="af-bot" tabindex="-1" autocomplete="off">
+      <form class="af" id="applyForm" action="https://formspree.io/f/xjyvqprg" method="POST">
+        <input type="hidden" name="_subject" value="Pilot application — buildwithbrook.com">
+        <input type="hidden" name="_next" value="https://buildwithbrook.com/apply/thanks/">
+        <input type="text" name="_gotcha" class="af-bot" tabindex="-1" autocomplete="off">
 
         <p class="af-legend"><b class="af-req" aria-hidden="true">*</b> Required. Everything else is optional.</p>
 
@@ -3468,7 +3466,6 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
 (function(){
   var f=document.getElementById('applyForm'); if(!f) return;
   var btn=document.getElementById('applySubmit'), st=document.getElementById('applyStatus');
-  var KEY=f.elements['access_key'].value;
   f.addEventListener('submit', function(e){
     // ALWAYS stop the native POST: with it in play an invalid or empty
     // form still reached the endpoint and recorded a blank submission.
@@ -3482,13 +3479,13 @@ html.js.no-vt .slab{ transform:perspective(1600px) rotateX(var(--sx,0deg)) scale
     st.className='af-status'; st.textContent='Sending…';
     btn.disabled=true; btn.textContent='Sending…';
     var data=Object.fromEntries(new FormData(f).entries());
-    fetch('https://api.web3forms.com/submit',{
+    fetch('https://formspree.io/f/xjyvqprg',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify(data)
     }).then(function(r){ return r.json(); }).then(function(j){
-      if(j && j.success){ window.location.href='https://buildwithbrook.com/apply/thanks/'; }
-      else { throw new Error((j && j.message) || 'failed'); }
+      if(j && !j.errors){ window.location.href='https://buildwithbrook.com/apply/thanks/'; }
+      else { throw new Error((j.errors && j.errors[0] && j.errors[0].message) || 'failed'); }
     }).catch(function(){
       st.className='af-status is-err';
       st.innerHTML='That did not send. Please email it to '+
