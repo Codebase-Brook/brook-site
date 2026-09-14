@@ -2,20 +2,26 @@
 <script>
 var log=[],o=document.getElementById('o');
 function show(){o.textContent=log.join('\n');}
-log.push('origin: '+location.origin); show();
-var fd=new FormData();
-fd.append('access_key','ffa4eddb-d297-4b49-84cf-74c66aca80d1');
-fd.append('subject','TEST — /apply wiring check (safe to delete)');
-fd.append('from_name','buildwithbrook.com');
-fd.append('name','Wiring Test');
-fd.append('business','buildwithbrook.com');
-fd.append('email','brookconnects@gmail.com');
-fd.append('business_type','test');
-fd.append('list_size','Not sure');
-fd.append('list_location','A spreadsheet or CSV');
-fd.append('notes','Automated check that the live /apply form reaches the inbox. Safe to delete.');
-fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
- .then(function(r){ log.push('status: '+r.status); show(); return r.json(); })
- .then(function(j){ log.push('success: '+j.success); log.push('message: '+(j.message||'')); show(); document.title='ok'; })
- .catch(function(e){ log.push('FAILED: '+e.message); show(); document.title='ok'; });
-</script></body>
+log.push('origin: '+location.origin);
+// no-cors gets us the raw status without CORS masking the response
+fetch('https://api.web3forms.com/submit',{method:'POST',mode:'no-cors',body:(function(){
+  var f=new FormData();
+  f.append('access_key','ffa4eddb-d297-4b49-84cf-74c66aca80d1');
+  f.append('name','probe'); f.append('email','brookconnects@gmail.com');
+  f.append('subject','TEST probe'); return f;})()})
+ .then(function(r){ log.push('no-cors type='+r.type+' status='+r.status); show(); })
+ .catch(function(e){ log.push('no-cors FAILED: '+e.message); show(); })
+ .finally(function(){
+   // and a normal form POST into an iframe, which shows the server's own body
+   var f=document.createElement('form');
+   f.method='POST'; f.action='https://api.web3forms.com/submit'; f.target='res';
+   [['access_key','ffa4eddb-d297-4b49-84cf-74c66aca80d1'],['name','probe2'],
+    ['email','brookconnects@gmail.com'],['subject','TEST probe2']].forEach(function(p){
+      var i=document.createElement('input'); i.type='hidden'; i.name=p[0]; i.value=p[1]; f.appendChild(i);
+   });
+   document.body.appendChild(f); f.submit();
+   setTimeout(function(){ document.title='ok'; }, 6000);
+ });
+</script>
+<iframe name="res" style="width:790px;height:110px;border:1px solid #999"></iframe>
+</body>
