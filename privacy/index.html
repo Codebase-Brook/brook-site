@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy — Brook</title>
+<meta name="description" content="What buildwithbrook.com and Brook's tools collect, why, who else touches it, and how to get it deleted.">
+<link rel="canonical" href="https://buildwithbrook.com/privacy/">
+<link rel="icon" href="../brook.jpg">
+<script>try{var t=localStorage.getItem('brook-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Indigo, the published palette (index.html, 2026-09-14). Light, dark by OS, dark by toggle. */
+:root{
+  color-scheme:light;
+  --paper:#f8f8fb; --paper-2:#f0f0f6;
+  --t-strong:rgba(18,18,24,1); --t-body:rgba(18,18,24,.92); --t-muted:rgba(18,18,24,.66);
+  --line:rgba(18,18,24,.14); --line-soft:rgba(18,18,24,.09);
+  --ember:#3949c4; --ember-ink:#2f3ba3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#08080c; --paper-2:#0d0d13;
+    --t-strong:rgba(242,243,248,1); --t-body:rgba(242,243,248,.86); --t-muted:rgba(242,243,248,.62);
+    --line:rgba(242,243,248,.14); --line-soft:rgba(242,243,248,.085);
+    --ember:#5b6ce0; --ember-ink:#9aa5ff;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#08080c; --paper-2:#0d0d13;
+  --t-strong:rgba(242,243,248,1); --t-body:rgba(242,243,248,.86); --t-muted:rgba(242,243,248,.62);
+  --line:rgba(242,243,248,.14); --line-soft:rgba(242,243,248,.085);
+  --ember:#5b6ce0; --ember-ink:#9aa5ff;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--t-body);
+  overflow-wrap:break-word;
+  font:400 17px/1.65 "Outfit",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line-soft)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--t-strong)}
+.brand b{font-size:19px;font-weight:600;letter-spacing:.15em}
+.brand span{font-size:14px;font-weight:400;letter-spacing:.06em;color:var(--t-muted)}
+.brand-bar{width:1.3px;height:21px;background:var(--line);display:block;flex:none}
+.back{font-size:15px;color:var(--t-muted);text-decoration:none}
+.back:hover{color:var(--t-strong)}
+main.wrap{padding-top:56px;padding-bottom:72px}
+h1{font-size:40px;line-height:1.15;font-weight:500;letter-spacing:-.01em;color:var(--t-strong);margin:0 0 10px}
+.updated{font-size:15px;color:var(--t-muted);margin:0 0 36px}
+.lede{font-size:19px;color:var(--t-strong);margin:0 0 8px}
+h2{font-size:22px;line-height:1.3;font-weight:500;color:var(--t-strong);margin:44px 0 10px;
+  padding-top:28px;border-top:1px solid var(--line-soft)}
+p,li{margin:0 0 14px}
+ul{padding-left:22px;margin:0 0 14px}
+li::marker{color:var(--ember)}
+a{color:var(--ember-ink);text-underline-offset:3px}
+strong{font-weight:500;color:var(--t-strong)}
+footer{border-top:1px solid var(--line-soft);padding:28px 0 40px;font-size:15px;color:var(--t-muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--t-muted)}
+@media (max-width:600px){
+  body{font-size:16px}
+  main.wrap{padding-top:40px;padding-bottom:56px}
+  h1{font-size:32px}
+  .lede{font-size:18px}
+  .brand span{display:none}
+  .brand-bar{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/"><b>BROOK</b><i class="brand-bar" aria-hidden="true"></i><span>AI&nbsp;Systems</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Privacy</h1>
+  <p class="updated">Last updated October 27, 2026</p>
+
+  <p class="lede">I'm Brook Yednekachew, and I run buildwithbrook.com on my own. This page says what I collect, why, who else touches it, and how to have it deleted.</p>
+  <p>Questions or a deletion request: <a href="mailto:brookconnects@gmail.com">brookconnects@gmail.com</a>. I read that inbox myself.</p>
+
+  <h2>If you fill in the application form</h2>
+  <p>The form at <a href="/apply/">/apply</a> asks for your name, email, business name and type, website, a short description, and how large your client list is and where it's kept. I use it only to decide whether I can help and to reply to you.</p>
+  <p>The form is run by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree</a>, which receives what you type and forwards it to me by email.</p>
+
+  <h2>If you watch a video on this site</h2>
+  <p>Demo videos play through YouTube's privacy-enhanced mode (youtube-nocookie.com). YouTube sets no tracking cookies until you press play. After that, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a> applies.</p>
+  <p>The site also loads its font from Google Fonts. It has no analytics, no ad trackers, and no cookies of its own.</p>
+
+  <h2>If you downloaded a free kit</h2>
+  <p>The kits at <a href="https://systems.buildwithbrook.com">systems.buildwithbrook.com</a> ask for your email so I can send the kit. Your email goes to <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">MailerLite</a>, the service that sends it, and I may send you occasional emails after that. Every email has an unsubscribe link.</p>
+
+  <h2>If I emailed you first</h2>
+  <p>I write to small-business owners one at a time. I find your name and business email on your own website or a public business or licensing record. I keep your name, business name, email address, and the emails between us, so I don't contact you twice or after you say no.</p>
+  <p>Reply "no thanks" and you won't hear from me again. Ask me to delete what I hold and I will.</p>
+
+  <h2>My email tool and your Google data</h2>
+  <p>I use a small tool I built, connected to my own Gmail accounts through Google's API. It sends emails I've already written as drafts, and it reads my Sent folder and replies so it never emails anyone twice or after they've written back. It works only on my own accounts. It never touches anyone else's Google account, and it never shares or sells what it reads.</p>
+  <p>Its use of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>If you become a client</h2>
+  <p>Some work means looking at your client list. Before I see any client data, we sign a Business Associate Agreement (the HIPAA contract), and you share the export through a secure link, never by email. I use your data only to run the work you approved, and I delete it when we finish or when you ask.</p>
+
+  <h2>What I never do</h2>
+  <ul>
+    <li>Sell or rent anyone's information.</li>
+    <li>Add you to a mailing list you didn't ask for.</li>
+    <li>Keep client data after the work ends.</li>
+  </ul>
+
+  <h2>Changes</h2>
+  <p>If this page changes, the date at the top changes with it.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 buildwithbrook.com</span>
+    <span><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="mailto:brookconnects@gmail.com">brookconnects@gmail.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
