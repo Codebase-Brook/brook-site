@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found — Brook</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem('brook-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Indigo, the published palette (index.html, 2026-09-14). Light, dark by OS, dark by toggle. */
+:root{
+  color-scheme:light;
+  --paper:#f8f8fb; --paper-2:#f0f0f6;
+  --t-strong:rgba(18,18,24,1); --t-body:rgba(18,18,24,.92); --t-muted:rgba(18,18,24,.66);
+  --line:rgba(18,18,24,.14); --line-soft:rgba(18,18,24,.09);
+  --ember:#3949c4; --ember-ink:#2f3ba3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#08080c; --paper-2:#0d0d13;
+    --t-strong:rgba(242,243,248,1); --t-body:rgba(242,243,248,.86); --t-muted:rgba(242,243,248,.62);
+    --line:rgba(242,243,248,.14); --line-soft:rgba(242,243,248,.085);
+    --ember:#5b6ce0; --ember-ink:#9aa5ff;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#08080c; --paper-2:#0d0d13;
+  --t-strong:rgba(242,243,248,1); --t-body:rgba(242,243,248,.86); --t-muted:rgba(242,243,248,.62);
+  --line:rgba(242,243,248,.14); --line-soft:rgba(242,243,248,.085);
+  --ember:#5b6ce0; --ember-ink:#9aa5ff;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--t-body);
+  overflow-wrap:break-word;
+  font:400 17px/1.65 "Outfit",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line-soft)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--t-strong)}
+.brand b{font-size:19px;font-weight:600;letter-spacing:.15em}
+.brand span{font-size:14px;font-weight:400;letter-spacing:.06em;color:var(--t-muted)}
+.brand-bar{width:1.3px;height:21px;background:var(--line);display:block;flex:none}
+.back{font-size:14px;color:var(--t-muted);text-decoration:none}
+.back:hover{color:var(--t-strong)}
+main.wrap{padding-top:56px;padding-bottom:72px}
+h1{font-size:42px;line-height:1.04;font-weight:400;letter-spacing:-.028em;color:var(--t-strong);margin:0 0 14px}
+.updated{font-size:15px;color:var(--t-muted);margin:0 0 36px}
+.lede{font-size:19px;color:var(--t-strong);margin:0 0 8px}
+h2{font-size:24px;line-height:1.2;font-weight:400;letter-spacing:-.018em;color:var(--t-strong);margin:44px 0 10px;
+  padding-top:28px;border-top:1px solid var(--line-soft)}
+p,li{margin:0 0 14px}
+ul{padding-left:22px;margin:0 0 14px}
+li::marker{color:var(--ember)}
+a{color:var(--ember-ink);text-underline-offset:3px}
+strong{font-weight:500;color:var(--t-strong)}
+footer{border-top:1px solid var(--line-soft);padding:28px 0 40px;font-size:14px;color:var(--t-muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--t-muted)}
+@media (max-width:600px){
+  body{font-size:16px}
+  main.wrap{padding-top:40px;padding-bottom:56px}
+  h1{font-size:32px}
+  .lede{font-size:18px}
+  .brand span{display:none}
+  .brand-bar{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/"><b>BROOK</b><i class="brand-bar" aria-hidden="true"></i><span>AI&nbsp;Systems</span></a>
+    <a class="back" href="/">&larr; Home</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>That page doesn&rsquo;t exist.</h1>
+  <p class="lede">The link may be old, or there may be a typo in it.</p>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/products/reactivation-studio/">Reactivation Studio</a>: bring back the clients who stopped booking</li>
+    <li><a href="https://systems.buildwithbrook.com/">Free kits</a></li>
+  </ul>
+  <p>Still stuck? Email me at <a href="mailto:brookconnects@gmail.com">brookconnects@gmail.com</a>.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 buildwithbrook.com</span>
+    <span><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="mailto:brookconnects@gmail.com">brookconnects@gmail.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

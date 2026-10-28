@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /apply/thanks/
+
+Sitemap: https://buildwithbrook.com/sitemap.xml
